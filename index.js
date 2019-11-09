@@ -5,6 +5,14 @@ const app=express();
 const port=8000;
 
 
+// using express router
+app.use('/',require('./routes'));
+
+// seting up our view engine
+
+app.set('view engine','ejs');
+app.set('views','./views');
+
 // firing server
 
 app.listen(port,function(err)
