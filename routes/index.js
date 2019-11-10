@@ -9,6 +9,7 @@ router.get('/',homecontroler.home);
 
 router.use('/user',require('./user'));
 
+//router.use('/user_post',require('./post'));
 
 //exporting it for other file
 

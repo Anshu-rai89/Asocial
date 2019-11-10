@@ -13,6 +13,8 @@
   "author": "Anshu Rai",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "cookies-parser": "^1.2.0",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "mongoose": "^5.7.9"

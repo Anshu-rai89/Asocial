@@ -7,9 +7,12 @@ const port=8000;
 // using express layouts for creating views layout
 const expresslayout=require('express-ejs-layouts');
 const db=require('./config/mongoose');
+const cokkiesparser=require('cookie-parser');
 app.use(express.static('./assets'));
 
 app.use(expresslayout);
+app.use(express.urlencoded());
+app.use(cokkiesparser());
 
 // extract style and script from subpages to layouts
 app.set('layout extractStyles',true);
