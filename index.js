@@ -8,6 +8,11 @@ const port=8000;
 const expresslayout=require('express-ejs-layouts');
 const db=require('./config/mongoose');
 const cokkiesparser=require('cookie-parser');
+const passport=require('passport');
+
+// using session and passport to  authenticate 
+const session=require('express-session');
+const passportlocal=require('./config/passport-local');
 app.use(express.static('./assets'));
 
 app.use(expresslayout);
@@ -20,12 +25,32 @@ app.set('layout extractScripts',true);
 
 
 // using express router
-app.use('/',require('./routes'));
+//app.use('/',require('./routes'));
 
 // seting up our view engine
 
 app.set('view engine','ejs');
 app.set('views','./views');
+
+//  using session as middleware here 
+
+app.use(session(
+{
+     name:'codial',
+     secret:'heyiamanshu',
+     saveUninitialized: false,
+     resave: false,
+     cookie:{
+          maxAge:(1000 *60 *100)
+     }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+// using express router
+app.use('/',require('./routes'));
 
 // firing server
 
