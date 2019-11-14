@@ -7,7 +7,7 @@ module.exports.profile=function(req,res)
 
 
 module.exports.signin=function(req,res)
-{
+{ if(req.isAuthenticated())  return res.redirect('back');
     res.render('signin',
     {
         title:"sign in"
@@ -15,7 +15,7 @@ module.exports.signin=function(req,res)
 }
 
 module.exports.signup=function(req,res)
-{
+{  if(req.isAuthenticated())  return res.redirect('back');
     res.render('signup',
     {
         title:"sign Up"
