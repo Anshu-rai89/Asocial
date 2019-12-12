@@ -2,7 +2,7 @@ const User=require('../models/user');
 
 module.exports.profile=function(req,res)
 {
-    res.render('user',{title:"user"});
+    res.render('user',{title:" To Asocial "});
 }
 
 
