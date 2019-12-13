@@ -8,5 +8,6 @@ const postcontrooler=require('../controllers/postcontroller');
 
 
 router.post('/create',passport.checkAuthentication,postcontrooler.create);
+router.get('/destroy/:id',passport.checkAuthentication,postcontrooler.destroy);
 
 module.exports=router;

@@ -26,3 +26,24 @@ module.exports.create=function(req,res)
        }
    });
 }
+
+
+// creting controller to delete comments
+
+module.exports.destroy=function(req,res)
+{
+    Comment.findById(req.params.id,function(err,comment)
+    {
+        if(comment.user==req.user.id)
+        {
+            let commentid=req.post;
+            comment.remove();
+
+            Post.findByIdAndUpdate(commentid,{$pull:{comment:req.params.id}},function(err,post)
+            {
+                return res.redirect('back');
+            });
+        }
+        else  return res.redirect('back');
+    });
+}
