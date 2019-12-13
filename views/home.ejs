@@ -4,7 +4,7 @@
 <h1>Welcome to <%=title%></h1>
 
 
-
+<% if (locals.user) {%>
 <section id="feed-posts">
     <h4>Posts</h4>
     <form action="/post/create" id="new-post-form" method="POST">
@@ -12,6 +12,7 @@
         <input type="submit" value="Post">
     </form>
 </section>
+<%}%>
 
 
 <div id="post-cnatiner">
