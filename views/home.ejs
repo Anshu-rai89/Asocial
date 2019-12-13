@@ -12,3 +12,21 @@
         <input type="submit" value="Post">
     </form>
 </section>
+
+
+<div id="post-cnatiner">
+    <ul>
+  
+       <% for (post of posts) { %>
+           <p> <li>
+               
+             <%=post.content%>
+             <br>
+             <small>
+                 <%=post.user.name%>
+             </small>
+            </li></p>
+          <% } %>
+    </ul>
+  
+  </div>
