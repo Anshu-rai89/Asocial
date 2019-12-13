@@ -9,6 +9,7 @@ router.get('/',homecontroler.home);
 
 router.use('/user',require('./user'));
 router.use('/post',require('./post'));
+router.use('/comment',require('./comment'));
 
 //router.use('/user_post',require('./post'));
 
