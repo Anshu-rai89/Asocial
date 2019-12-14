@@ -1,31 +1,41 @@
 const Post=require('../models/post');
 const Comment=require('../models/comment');
 
-module.exports.create=function(req,res)
-{  Post.create(
+module.exports.create= async function(req,res)
+{  try 
+    {
+        let post= Post.create(
     {
     content:req.body.content,
     user: req.user._id
-    },function(err,post)
-    {
-        if(err) { console.log("Errorin creating post"); return;}
+    });
+    req.flash('success','Post is created');
         return res.redirect('back');
-    }
-    );
+} catch(err)
+{
+    req.flash('error',err);
+    return;
+}
 }
 
-module.exports.destroy=function(req,res)
+module.exports.destroy= async function(req,res)
 {
-    Post.findById(req.params.id,function(err,post)
-    { if(err) {console.log("ERror in finding post");return;}
+     try
+     {
+         let post=await Post.findById(req.params.id);
+
         if(post.user==req.user.id)
-        {
+        { req.flash('success','Post Deleted suceesfully');
             post.remove();
-            Comment.deleteMany({post:req.params.id},function(err)
-            {  if(err)  {console.log("Error in deleteing comment");return;}
+          await  Comment.deleteMany({post:req.params.id});
                return res.redirect('back');
-            });
+            
         }
         else return res.redirect('back');
-    });
+    } catch(err)
+    {   
+        req.flash('error',err);
+        return;
+    }
+
 }

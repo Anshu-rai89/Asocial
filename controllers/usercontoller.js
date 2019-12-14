@@ -28,34 +28,38 @@ module.exports.post=function(req,res)
 }
 
 // get the sign up data
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
+   try{
+
     if (req.body.password != req.body.confirm_password){
         return res.redirect('back');
     }
 
-    User.findOne({email: req.body.email}, function(err, user){
-        if(err){console.log('error in finding user in signing up'); return}
+  let user=  User.findOne({email: req.body.email});
 
         if (!user){
-            User.create(req.body, function(err, user){
-                if(err){console.log('error in creating user while signing up'); return}
+           let newuser= User.create(req.body);
 
                 return res.redirect('/user/signin');
-            })
-        }else{
+            }
+        else{
             return res.redirect('back');
         }
-
-    });
+    }catch(err)
+    {
+        console.log('ERror');
+        return;
+    }
+    
 }
 
 module.exports.createsession = function(req,res)
-{
+{  req.flash('success','Logged in Successfully');
     return res.redirect('/');
 }
 
 module.exports.signout=function(req,res)
-{
+{  req.flash('success','You are Logged Out');
     req.logout();
     return res.redirect('/');
 }
