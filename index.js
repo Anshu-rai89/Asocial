@@ -48,9 +48,9 @@ app.set('views','./views');
 //  using session as middleware here 
 
 app.use(session({
-     name: 'codeial',
+     name: 'Asocial',
      // TODO change the secret before deployment in production mode
-     secret: 'blahsomething',
+     secret: 'iamawsomeome',
      saveUninitialized: false,
      resave: false,
      cookie: {

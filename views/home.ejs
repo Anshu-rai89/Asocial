@@ -1,21 +1,25 @@
 
-
+<link rel="stylesheet" href="/css/home.css">
 
 <h1>Welcome to <%=title%></h1>
 
-
+<div id="home-container">
 <% if (locals.user) {%>
 <section id="feed-posts">
     <h4>Posts</h4>
-    <form action="/post/create" id="new-post-form" method="POST">
+    <form action="/post/create" id="post-form" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
         <input type="submit" value="Post">
     </form>
-</section>
+
 <%}%>
 
 
-<div id="post-cnatiner">
+
+
+
+
+<div id="post-container">
     <ul>
   
        <% for (post of posts) { %>
@@ -24,3 +28,17 @@
     </ul>
   
   </div>
+
+</section>
+
+  <section id="user-friends">
+    <h4>Friends</h4>
+    <% for(u of all_users){%>
+        <p>
+            <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
+        </p>
+    <% } %>
+</section>
+</div>
+
+  <script src="/js/home_post.js"></script>

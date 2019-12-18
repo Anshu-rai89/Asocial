@@ -1,8 +1,27 @@
 const User=require('../models/user');
 
-module.exports.profile=function(req,res)
+// let's keep it same as before
+module.exports.profile = function(req, res){
+    User.findById(req.params.id, function(err, user){
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user: user
+        });
+    });
+
+}
+
+module.exports.update=function(req,res)
 {
-    res.render('user',{title:" To Asocial "});
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            req.flash('success', 'Updated!');
+            return res.redirect('back');
+        });
+    }else{
+        req.flash('error', 'Unauthorized!');
+        return res.status(401).send('Unauthorized');
+    }
 }
 
 
