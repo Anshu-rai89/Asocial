@@ -13,6 +13,7 @@ const passport=require('passport');
 // using session and passport to  authenticate 
 const session=require('express-session');
 const passportlocal=require('./config/passport-local');
+const passportjwt=require('./config/passport-jwt');
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
