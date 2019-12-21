@@ -14,6 +14,7 @@ const passport=require('passport');
 const session=require('express-session');
 const passportlocal=require('./config/passport-local');
 const passportjwt=require('./config/passport-jwt');
+const passportgoogle=require('./config/passport_googleoauth2');
 const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');

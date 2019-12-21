@@ -16,5 +16,10 @@ router.post('/create-session',passport.authenticate('local'
 ,{failureRedirect:'/user/signin'}),usercontoler.createsession);
 router.get('/signout',usercontoler.signout);
 
+// router for google auth
+
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/user/signin'}),usercontoler.createsession);
+
 
 module.exports=router;
