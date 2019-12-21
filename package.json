@@ -1,5 +1,5 @@
 {
-  "name": "Asocial",
+  "name": "asocial",
   "version": "1.0.0",
   "description": "A social chat web application",
   "main": "index.js",
@@ -22,6 +22,13 @@
     "express-session": "^1.17.0",
     "mongoose": "^5.7.9",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "connect-flash" :"^0.1.1",
+    "jsonwebtoken":"^8.5.1",
+    "multer" :"^1.4.2",
+    "node-sass-middleware":"^0.11.0",
+    "nodemailer":"^6.4.2",
+    "nodemon":"^2.0.2 ",
+    "passport-jwt":"^4.0.0"
   }
 }
