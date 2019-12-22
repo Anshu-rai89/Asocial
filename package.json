@@ -13,7 +13,6 @@
   "author": "Anshu Rai",
   "license": "MIT",
   "dependencies": {
-    "connect-flash": "^0.1.1",
     "connect-mongo": "^3.1.2",
     "cookie-parser": "^1.4.4",
     "cookies-parser": "^1.2.0",
