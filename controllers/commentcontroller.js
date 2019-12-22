@@ -19,6 +19,9 @@ module.exports.create=async function(req,res)
                    console.log(comment);
                    post.comment.push(comment);
                    post.save();
+
+                   if(req.xhr)
+                   {
                    comment= await comment.populate('user','name email').execPopulate();
                   // commentmailer.newComment(comment);
 
@@ -27,13 +30,26 @@ module.exports.create=async function(req,res)
                       if(err){console.log('error in queuing job',err);return;}
                       console.log('job enqued ',job.id);
                   });
+                  
+
+                return res.status(200).json({
+                    data: {
+                        comment: comment
+                    },
+                    message: "Post created!"
+                });
+                  
+                }
+
+                req.flash('success', 'Comment published!');
                    res.redirect('/');
                }
+            
          
     
    } catch(err)
-   {
-       console.log("Error");
+   {     req.flash('error', err);
+       console.log(err);
        return;
    }
 }
@@ -54,13 +70,32 @@ module.exports.destroy= async function(req,res)
 
           let post= Post.findByIdAndUpdate(commentid,{$pull:{comment:req.params.id}});
            
+
+             if(req.xhr)
+             {
+                 // send the comment id which was deleted back to views
+
+                 return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: "Post deleted"
+                });
+
+             }
+
+             req.flash('success', 'Comment deleted!');
                 return res.redirect('back');
         
         }
-        else  return res.redirect('back');
+        else  
+        {  
+            req.flash('error', 'Unauthorized');
+            return res.redirect('back');
+        }
     } catch(err)
     {
-        console.log("Error");
+        req.flash('error', err);
         return;
     }
     
