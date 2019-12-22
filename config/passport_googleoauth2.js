@@ -10,9 +10,9 @@ const User=require('../models/user');
 // tell passport to use google strategy 
 
 passport.use(new googleStartegy({
-    clientID:"**Use your own id",
-    clientSecret:"Your own acess token",
-    callbackURL:"http://localhost:8000/user/auth/google/callback",
+    clientID:"",                          // use your own clinet id
+    clientSecret:"",                      // use yourown token
+    callbackURL:"http://localhost:8000/user/auth/google/callback",       
 },
 function(accessToken, refreshToken, profile,done)
 {

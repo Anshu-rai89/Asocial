@@ -30,6 +30,10 @@ app.use(sassMiddleware({
 }));
 app.use(express.static('./assets'));
 
+// makeing uplod path avaialble for the browser
+
+app.use('/uploads',express.static(__dirname +'/uploads'));
+
 app.use(expresslayout);
 app.use(express.urlencoded());
 app.use(cokkiesparser());

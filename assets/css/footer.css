@@ -1,5 +1,6 @@
 #layout-footer {
   color: white;
+  vertical-align: bottom;
   background: grey;
   padding: 5px 10px;
   display: flex;

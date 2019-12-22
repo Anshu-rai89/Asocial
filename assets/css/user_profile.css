@@ -1,0 +1,10 @@
+body {
+  background-color: lightblue; }
+  body #profile-pic {
+    height: 100px;
+    width: 100px;
+    border-radius: 60px; }
+  body #profile-pic-head {
+    height: 60px;
+    width: 60px;
+    border-radius: 40px; }
