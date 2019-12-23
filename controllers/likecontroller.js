@@ -6,6 +6,9 @@ const Comment=require('../models/comment');
 
 module.exports.toggled_like= async function(req,res)
 {   
+   
+try
+   {
     let likeable;                   // var to store type of incmomimg route
     let delete_var=false;           // var to keeptrack of of toogle to update count on like
     
@@ -61,4 +64,10 @@ module.exports.toggled_like= async function(req,res)
                 delete_var=delete_var
             }
         });
+}catch(err){
+    console.log(err);
+    return res.json(500, {
+        message: 'Internal Server Error'
+    });
+}
 }

@@ -3,6 +3,7 @@ const Post=require('../models/post');
 const commentmailer=require('../mailers/comment_mailer');
 const queue=require('../config/kyu');
 const commentworker=require('../workers/comment_mailerworker');
+const Like=require('../models/like');
 
 module.exports.create=async function(req,res)
 {  try{
@@ -70,6 +71,8 @@ module.exports.destroy= async function(req,res)
 
           let post= Post.findByIdAndUpdate(commentid,{$pull:{comment:req.params.id}});
            
+        // destroy the linked likeswith comment
+        await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
 
              if(req.xhr)
              {
