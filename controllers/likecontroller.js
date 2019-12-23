@@ -41,7 +41,7 @@ module.exports.toggled_like= async function(req,res)
       {
           // if not present creat  it 
 
-           let newuser= await Like.create(
+           let newlike= await Like.create(
                {
                    user:req.user._id,
                    likeable:req.query.id,
@@ -49,5 +49,16 @@ module.exports.toggled_like= async function(req,res)
 
                }
            );
+           likeable.likes.push(newlike._id);
+           likeable.save();
       }
+
+      return res.json(200,
+        {
+            message:"Request Successfull",
+            data:
+            {
+                delete_var=delete_var
+            }
+        })
 }
