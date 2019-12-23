@@ -110,7 +110,7 @@
         $('#post-container>ul>li').each(function(){
             let self = $(this);
             let deleteButton = $(' .delete-post-button', self);
-            deletePost(deleteButton);
+            deletepost(deleteButton);
 
             // get the post's id by splitting the id attribute
             let postId = self.prop('id').split("-")[1]

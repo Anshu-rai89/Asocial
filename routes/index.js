@@ -11,7 +11,7 @@ router.use('/user',require('./user'));
 router.use('/post',require('./post'));
 router.use('/comment',require('./comment'));
 router.use('/api',require('./api'));
-router.use('/like',require('./like'));
+router.use('/likes',require('./like'));
 
 //router.use('/user_post',require('./post'));
 

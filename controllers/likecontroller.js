@@ -18,7 +18,7 @@ try
     if(req.query.type=='Post')
         {   // if its of type post then find it by post
             likeable= await Post.findById(req.query.id).populate('Like');
-        } ekse
+        } else
         {    // else find it by comment
             likeable= await Comment.findById(req.query.id).populate('Like');
         }
