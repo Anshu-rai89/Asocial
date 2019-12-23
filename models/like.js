@@ -21,7 +21,7 @@ const likeSchema=new mongoose.Schema({
 });
 
 
-const Like=mongoose.model('LIke',likeSchema);
+const Like=mongoose.model('Like',likeSchema);
 
 module.exports=Like;
 

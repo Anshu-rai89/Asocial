@@ -33,7 +33,7 @@ module.exports.home= async function(req,res)
                     });
         
 } catch(err)
-{
-    return res.flash('error',err);
+{  console.log("Error in home controller",err);
+    return res.redirect('back');
 }
 }
