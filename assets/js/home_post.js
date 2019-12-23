@@ -18,8 +18,10 @@
                   
                     $('#post-container>ul').prepend(newPost);
                     deletepost($(' .delete-post-button',newPost));
-
+                     // cusing  post comment class fromhome_comment.js
                     new PostComments(data.data.post._id);
+                    // using toggletask class from like.js
+                    new ToggleLike($(' .toggle-like-button', newPost));
 
                     new Noty({
                         theme: 'relax',

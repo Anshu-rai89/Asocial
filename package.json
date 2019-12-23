@@ -1,5 +1,5 @@
 {
-  "name": "codeial",
+  "name": "asocial",
   "version": "1.0.0",
   "description": "My all social media web application",
   "main": "index.js",
@@ -10,8 +10,8 @@
   "keywords": [
     "social"
   ],
-  "author": "CodingNinjas",
-  "license": "ISC",
+  "author": "Anshu Rai",
+  "license": "MIT",
   "dependencies": {
     "connect-flash": "^0.1.1",
     "connect-mongo": "^2.0.3",
