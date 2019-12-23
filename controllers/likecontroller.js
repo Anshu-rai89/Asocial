@@ -60,5 +60,5 @@ module.exports.toggled_like= async function(req,res)
             {
                 delete_var=delete_var
             }
-        })
+        });
 }
