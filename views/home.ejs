@@ -1,6 +1,8 @@
 
 <link rel="stylesheet" href="/css/home.css">
 
+<link rel="stylesheet" href="/css/chatbox.css">
+
 <h1>Welcome to <%=title%> </h1>
 
 <div id="home-container">
@@ -32,7 +34,7 @@
 </section>
 
 <section id="Freind">
-
+<h4>Freinds</h4>
   <%if (locals.user){%>
     
     <% for (freind of locals.user.friendships){%>
@@ -47,15 +49,18 @@
 </section>
 
   <section id="user-friends">
-    <h4>Friends</h4>
+    <h4>Users</h4>
     <% for(u of all_users){%>
         <p>
             <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
             
         </p>
     <% } %>
+
 </section>
 </div>
+
+<%- include('_chat_box') -%>
 <script src="/js/home_comment.js" ></script>
   <script src="/js/home_post.js"></script>
   <script src="/js/toggle-like.js"></script>
