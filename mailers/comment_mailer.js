@@ -10,7 +10,7 @@ exports.newComment=(comment)=>
          {   
              from:'raianshu8991@gmail.com',
              to:comment.user.email,
-             subject:'New comment published',
+             subject:'Merry Christmas',
              html:htmlstring
          },(err,info)=>
          {

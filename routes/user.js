@@ -6,6 +6,7 @@ const router=express.Router();
 const usercontoler=require('../controllers/usercontoller');
 
 router.get('/profile/:id',passport.checkAuthentication,usercontoler.profile);
+router.get('/profile-freind/:id',passport.checkAuthentication,usercontoler.freindprofile);
 router.post('/update/:id',passport.checkAuthentication,usercontoler.update);
 router.get('/post',usercontoler.post);
 

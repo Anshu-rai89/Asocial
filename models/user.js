@@ -19,7 +19,15 @@ const userSchema = new mongoose.Schema({
     },avatar:
     {
         type:String
-    }
+    },friendships: [
+          {
+              type:String,
+              
+              
+           
+          }
+        
+    ]
 }, {
     timestamps: true
 });

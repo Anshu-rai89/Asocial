@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="/css/home.css">
 
-<h1>Welcome to <%=title%></h1>
+<h1>Welcome to <%=title%> </h1>
 
 <div id="home-container">
 <% if (locals.user) {%>
@@ -31,11 +31,27 @@
 
 </section>
 
+<section id="Freind">
+
+  <%if (locals.user){%>
+    
+    <% for (freind of locals.user.friendships){%>
+      <ul>
+        <l1 >
+            <a href='/user/profile-freind/<%=freind%>'> <%=freind%></a>
+            
+        </li> 
+      </ul>
+      <%}%>
+      <%}%>
+</section>
+
   <section id="user-friends">
     <h4>Friends</h4>
     <% for(u of all_users){%>
         <p>
             <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
+            
         </p>
     <% } %>
 </section>

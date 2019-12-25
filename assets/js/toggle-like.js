@@ -11,7 +11,7 @@ class ToggleLike{
             e.preventDefault();
             let self = this;
 
-            console.log("SEnding ajax request for ");
+           /// console.log("SEnding ajax request for ");
             $.ajax({
                 type: 'POST',
                 url: $(self).attr('href'),

@@ -13,6 +13,23 @@ module.exports.profile = function(req, res){
 
 }
 
+module.exports.freindprofile=async function(req,res)
+{   try
+    {
+      let user=await User.findOne({name:req.params.id});
+      return res.render('user_profile',{
+           title:'User Profile',
+           profile_user:user
+      });
+    }catch(err)
+    {
+        console.log('error in finding profile',err);
+        return res.redirect('back');
+    }
+
+
+}
+
 module.exports.update= async function(req,res)
 {
     if(req.user.id == req.params.id){
@@ -67,12 +84,21 @@ module.exports.signin=function(req,res)
     });
 }
 
-module.exports.signup=function(req,res)
-{  if(req.isAuthenticated())  return res.redirect('back');
-    res.render('signup',
-    {
-        title:"sign Up"
+module.exports.signup=async function(req,res)
+{ 
+    if (req.isAuthenticated()){
+        return res.redirect('/');
+    }
+
+
+    return res.render('signup', {
+        title: "Sign Up"
     });
+
+   
+
+
+  
 }
 
 module.exports.post=function(req,res)
@@ -88,10 +114,10 @@ module.exports.create = async function(req, res){
         return res.redirect('back');
     }
 
-  let user=  User.findOne({email: req.body.email});
+  let user=  await User.findOne({email: req.body.email});
 
         if (!user){
-           let newuser= User.create(req.body);
+           let newuser= await User.create(req.body);
 
                 return res.redirect('/user/signin');
             }
