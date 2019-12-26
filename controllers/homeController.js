@@ -5,8 +5,9 @@ const mailer=require('../mailers/comment_mailer');
 module.exports.home= async function(req,res)
 { 
     try{
-        let posts= await Post.find({}).populate('user')
+        let posts= await Post.find({})
             .sort('-createdAt')
+            .populate('user')
             .populate(
                 {
                     path:'comment',

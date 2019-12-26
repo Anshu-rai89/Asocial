@@ -23,7 +23,7 @@ const customMware=require('./config/middleware');
 // creating our chat server 
 
 const chatSever=require('http').Server(app);
-const chatSocket=require('./config/chatsockcet').chatSocket(chatSocket);
+const chatSocket=require('./config/chatsockcet').chatSocket(chatSever);
 
 chatSever.listen(5000);
 console.log('chatserver is listning at port 5000');
