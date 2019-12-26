@@ -40,7 +40,8 @@
     <% for (freind of locals.user.friendships){%>
       <ul>
         <l1 >
-            <a href='/user/profile-freind/<%=freind%>'> <%=freind%></a>
+            <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind.name%>'> <%=freind.name%></a>
+          
             
         </li> 
       </ul>
@@ -60,7 +61,7 @@
 </section>
 </div>
 
-<%- include('_chat_box') -%>
+
 <script src="/js/home_comment.js" ></script>
   <script src="/js/home_post.js"></script>
   <script src="/js/toggle-like.js"></script>
@@ -72,11 +73,3 @@
         let toggleLike = new ToggleLike(self);
     });
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>
-<script src='/js/chat_engine.js'></script>
-<% if (locals.user) {%>
-<script>
-
-  new ChatEngine('user-chat-box','<%=locals.user.email%>');
-</script>
-<%}%>

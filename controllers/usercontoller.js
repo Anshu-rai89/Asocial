@@ -13,13 +13,38 @@ module.exports.profile = function(req, res){
 
 }
 
+module.exports.search= async function(req,res)
+{ try{ 
+       let user=await User.findOne({email:req.body.email});
+
+       if(user)
+       {
+        console.log('user is ',user);
+
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user: user
+        });
+    }else{
+        req.flash('error','user not found');
+        return res.redirect('/');
+    }
+        
+
+     }catch(err)
+     {
+         
+         return res.redirect('back');
+     }
+}
 module.exports.freindprofile=async function(req,res)
 {   try
     {
-      let user=await User.findOne({name:req.params.id});
-      return res.render('user_profile',{
+      let user=await User.findOne({name:req.query.type});
+      return res.render('freinds',{
            title:'User Profile',
-           profile_user:user
+           profile_user:user,
+           id:req.query.id
       });
     }catch(err)
     {

@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         type:String
     },friendships: [
           {
-              type:String,
+             type:Object
               
               
            

@@ -16,6 +16,35 @@ try{
     let touser = await User.findById(req.query.id);
     //console.log(user.name);
    // console.log(user.friendships);
+
+   // searching if the other person has already aed you tolist
+
+   let otherfreind=await Freind.findOne(
+       { from_user:req.query.id,
+        to_name:fromuser.name,
+     
+        to_user:userid,
+       }
+   );
+  console.log('checking alrready freind fromother',otherfreind);
+   if(otherfreind) 
+   {   console.log('your freind found');
+
+            let friend={
+                name:touser.name,
+                id:`${otherfreind._id}`
+            }
+            console.log('adding freind ',friend);
+            fromuser.friendships.push(friend);
+            fromuser.save();
+        
+            console.log(fromuser.friendships);
+   }
+
+
+   else
+
+   {
     let existingfreindship= await Freind.findOne(
         {
             from_user:userid,
@@ -35,13 +64,17 @@ try{
                     to_user:req.query.id,
                    
                 });
-          
-           fromuser.friendships.push(freindship.to_name);
+          let friend={
+              name:freindship.to_name,
+              id:`${freindship._id}`
+          }
+           fromuser.friendships.push(friend);
            //console.log("updated freind ",user.freindships);
            fromuser.save();
         
       
         }
+    }
 
         return res.redirect('/');
 

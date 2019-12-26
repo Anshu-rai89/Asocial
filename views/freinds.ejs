@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href="/css/user_profile.css">
+<link rel="stylesheet" href="/css/chatbox.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<img id="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
+
+
+<p><%= profile_user.name %></p>
+<p><%= profile_user.email %></p>
+<button id="chatbutton">Chat</button>
+
+<div style='display: none;'id="chat" >
+
+    <%- include('_chat_box') -%>
+</div>
+<script>
+
+$('#chatbutton').click(function()
+    {
+       $('#chat').toggle();
+    }
+);
+</script>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js'></script>
+<script src='/js/chat_engine.js'></script>
+<% if (locals.user) {%>
+<script>
+
+  new ChatEngine('user-chat-box','<%=locals.user.email%>','<%=id%>');
+</script>
+<%}%>

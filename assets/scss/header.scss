@@ -15,6 +15,28 @@
             }
         }
 
+        .search-header
+        {
+           
+            height: 60px;
+            width: 80px;
+            border-radius: 30px;
+
+            
+           #search-form
+           {
+               
+               height: 100%;
+           }
+            #searchbtn
+            {   display: inline-block;
+                height: 15px;
+                width:20px;
+            }
+           
+        }
+
+
         .auth-links{
             ul{
                 margin: 5% 5px;

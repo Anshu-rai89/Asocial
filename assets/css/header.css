@@ -9,6 +9,16 @@
     margin: 5px;
     font-size: 1.4rem;
     font-weight: bold; }
+  #layout-header nav .search-header {
+    height: 60px;
+    width: 80px;
+    border-radius: 30px; }
+    #layout-header nav .search-header #search-form {
+      height: 100%; }
+    #layout-header nav .search-header #searchbtn {
+      display: inline-block;
+      height: 15px;
+      width: 20px; }
   #layout-header nav .auth-links ul {
     margin: 5% 5px;
     display: flex; }
