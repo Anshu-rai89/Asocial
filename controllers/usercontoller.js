@@ -1,6 +1,7 @@
 const User=require('../models/user');
 const fs=require('fs');
 const path=require('path');
+const Message=require('../models/message');
 
 // let's keep it same as before
 module.exports.profile = function(req, res){
@@ -41,10 +42,14 @@ module.exports.freindprofile=async function(req,res)
 {   try
     {
       let user=await User.findOne({name:req.query.type});
+
+      // finding the messages of the user from db
+      let messages=await Message.findOne({id:req.query.id});
       return res.render('freinds',{
            title:'User Profile',
            profile_user:user,
-           id:req.query.id
+           id:req.query.id,
+           msgs:messages
       });
     }catch(err)
     {
