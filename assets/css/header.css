@@ -11,6 +11,8 @@
     font-weight: bold; }
   #layout-header nav .search-header {
     border-radius: 30px; }
+    #layout-header nav .search-header #searchbtn {
+      background-color: white; }
   #layout-header nav .auth-links ul {
     margin: 5% 5px;
     display: flex; }
