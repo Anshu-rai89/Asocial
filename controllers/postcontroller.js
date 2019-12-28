@@ -23,7 +23,7 @@ module.exports.create= async function(req,res)
                 data:
                 {
                     post:post
-            },message:'post -created'
+            },message:'post a-created'
 
             });
     }

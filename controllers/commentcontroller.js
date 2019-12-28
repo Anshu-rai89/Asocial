@@ -20,10 +20,10 @@ module.exports.create=async function(req,res)
                    console.log(comment);
                    post.comment.push(comment);
                    post.save();
-
+                   comment= await comment.populate('user','name email').execPopulate();
                    if(req.xhr)
                    {
-                   comment= await comment.populate('user','name email').execPopulate();
+                  // comment= await comment.populate('user','name email').execPopulate();
                   // commentmailer.newComment(comment);
 
                   let job=queue.create('emails',comment).save((err)=>

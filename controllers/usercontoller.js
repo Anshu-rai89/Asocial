@@ -2,6 +2,9 @@ const User=require('../models/user');
 const fs=require('fs');
 const path=require('path');
 const Message=require('../models/message');
+const ResetPassword=require('../models/resetpassword');
+const crpto=require('crypto');
+const resetMailer=require('../mailers/resetpassword');
 
 // let's keep it same as before
 module.exports.profile = function(req, res){
@@ -37,6 +40,38 @@ module.exports.search= async function(req,res)
          
          return res.redirect('back');
      }
+}
+
+
+// controller to update password
+
+module.exports.resetPasswordMail=async function(req,res)
+{
+    try{
+        // find user by mail
+        let user=await User.findOne({email:req.body.email});
+
+        // crating resetpassword model details
+        console.log('user found ',user);
+
+    let resetDb= await ResetPassword.create(
+            {
+                user:user.id,
+                key:crpto.randomBytes(20).toString('hex'),
+                isvalid:true
+
+            }
+        );
+    
+        resetMailer.resetPassword(resetDb,user);
+        req.flash('success','Reset link is send to Your Email');
+
+        return res.redirect('back');
+    }catch(err)
+    {
+        console.log('error in processing reset request',err);
+        return res.redirect('back');
+    }
 }
 module.exports.freindprofile=async function(req,res)
 {   try
@@ -125,10 +160,14 @@ module.exports.signup=async function(req,res)
         title: "Sign Up"
     });
 
-   
+}
 
-
-  
+module.exports.resetpasswordpage=function(req,res)
+{
+    return res.render('resetpasswordpage',
+    {
+        title:'Reset Password'
+    });
 }
 
 module.exports.post=function(req,res)

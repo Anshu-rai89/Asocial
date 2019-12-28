@@ -17,6 +17,8 @@ router.post('/create',usercontoler.create);
 router.post('/create-session',passport.authenticate('local'
 ,{failureRedirect:'/user/signin'}),usercontoler.createsession);
 router.get('/signout',usercontoler.signout);
+router.get('/resetpassword/page',usercontoler.resetpasswordpage);
+router.post('/resetpassword/email',usercontoler.resetPasswordMail);
 
 // router for google auth
 
