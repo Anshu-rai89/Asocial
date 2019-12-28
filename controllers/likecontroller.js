@@ -58,7 +58,7 @@ module.exports.toggled_like= async function(req,res)
             message:"Request Successfull",
             data:
             {
-                delete_var=delete_var
+                delete_var: delete_var
             }
         });
 }
