@@ -19,6 +19,8 @@ router.post('/create-session',passport.authenticate('local'
 router.get('/signout',usercontoler.signout);
 router.get('/resetpassword/page',usercontoler.resetpasswordpage);
 router.post('/resetpassword/email',usercontoler.resetPasswordMail);
+router.get('/resetpassword/update',usercontoler.resetPasswodUpdatePage);
+router.post('/resetPassword',usercontoler.resetPassword);
 
 // router for google auth
 
