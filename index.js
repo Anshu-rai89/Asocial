@@ -2,7 +2,7 @@ const express=require('express');
 
 
 const app=express();
-const port=8000;
+const port=process.env.PORT||8000;
 
 // using express layouts for creating views layout
 const expresslayout=require('express-ejs-layouts');
@@ -19,6 +19,14 @@ const MongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
 const customMware=require('./config/middleware');
+
+// creating our chat server 
+
+const chatSever=require('http').Server(app);
+const chatSocket=require('./config/chatsockcet').chatSocket(chatSever);
+
+chatSever.listen(process.env.PORT||5000);
+console.log('chatserver is listning at port 5000');
 
 // middlewares 
 app.use(sassMiddleware({

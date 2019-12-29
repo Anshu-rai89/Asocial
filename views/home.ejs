@@ -1,7 +1,9 @@
 
 <link rel="stylesheet" href="/css/home.css">
 
-<h1>Welcome to <%=title%></h1>
+<link rel="stylesheet" href="/css/chatbox.css">
+
+<h1>Welcome to <%=title%> </h1>
 
 <div id="home-container">
 <% if (locals.user) {%>
@@ -31,14 +33,43 @@
 
 </section>
 
+<section id="Freind">
+<h4>Freinds</h4>
+  <%if (locals.user){%>
+    
+    <% for (freind of locals.user.friendships){%>
+      <ul>
+        <l1 >
+            <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind.name%>'> <%=freind.name%></a>
+          
+            
+        </li> 
+      </ul>
+      <%}%>
+      <%}%>
+</section>
+
   <section id="user-friends">
-    <h4>Friends</h4>
+    <h4>Users</h4>
     <% for(u of all_users){%>
         <p>
             <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
+            
         </p>
     <% } %>
+
 </section>
 </div>
+
+
 <script src="/js/home_comment.js" ></script>
   <script src="/js/home_post.js"></script>
+  <script src="/js/toggle-like.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+
+        let self = this;
+        console.log(this);
+        let toggleLike = new ToggleLike(self);
+    });
+</script>

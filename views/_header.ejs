@@ -1,5 +1,7 @@
-<link rel="stylesheet" href="/css/header.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="/css/user_profile.css">
+<link rel="stylesheet" href="/css/header.css">
 <header id="layout-header">
     <nav>
         <div class="mini-logo">
@@ -8,6 +10,14 @@
                    Asocial
                 </a>
             </p>
+        </div>
+
+        <div class="search-header">
+            <form id="search-form" action="/user/search"  method="POST">
+            <input type="email" name="email" placeholder="Your Email" required>
+            <button type="submit" id="searchbtn" ><i class="far fa-search" style="height: 100%;width:100%;"></i></button>
+            </form>
+            
         </div>
     
         <div class="auth-links">

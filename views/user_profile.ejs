@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/user_profile.css">
 
-<img id="profile-pic"src="<%=user.avatar%>" alt="<%=user.name%>">
+<img id="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
 
 
 <% if(user.id == profile_user.id){ %>
@@ -17,4 +17,5 @@
     <!-- else show only the profile info -->
     <p><%= profile_user.name %></p>
     <p><%= profile_user.email %></p>
+    <a href="/freind/add?id=<%=profile_user.id%>&name=<%=user.id%>">Add Freind</a>
 <%} %>

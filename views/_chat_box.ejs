@@ -1,0 +1,26 @@
+<% if (locals.user){ %>
+	<div id="user-chat-box">
+		<ul id="chat-messages-list">
+			<% if (msgs) {%>
+			<% for (m of msgs.message){ %>
+			 <% if(m.sender!=locals.user.email){%>
+			<li class="other-message">
+				<span><%=m.msg%></span>
+			</li>
+			<%} else {%>
+			
+			<li class="self-message">
+			   <span><%=m.msg%></span>
+				
+			</li>
+			<%}%>
+		   <%}%>
+		   <%}%>
+		</ul>
+		<div id="chat-message-input-container">
+			<input id="chat-message-input" placeholder="Type message here">
+			<button id="send-message">Send</button>
+		</div>
+
+	</div>
+<% } %>

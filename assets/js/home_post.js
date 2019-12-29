@@ -18,8 +18,10 @@
                   
                     $('#post-container>ul').prepend(newPost);
                     deletepost($(' .delete-post-button',newPost));
-
+                     // cusing  post comment class fromhome_comment.js
                     new PostComments(data.data.post._id);
+                    // using toggletask class from like.js
+                    new ToggleLike($(' .toggle-like-button', newPost));
 
                     new Noty({
                         theme: 'relax',
@@ -50,6 +52,16 @@
                         <br>
                         <small>
                         ${ post.user.name }
+                        </small>
+
+                        </small>
+                        <br>
+                        <small>
+                            
+                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+                                    0 Likes
+                                </a>
+                            
                         </small>
                     </p>
                     <div class="post-comments">
@@ -110,7 +122,7 @@
         $('#post-container>ul>li').each(function(){
             let self = $(this);
             let deleteButton = $(' .delete-post-button', self);
-            deletePost(deleteButton);
+            deletepost(deleteButton);
 
             // get the post's id by splitting the id attribute
             let postId = self.prop('id').split("-")[1]
