@@ -1,5 +1,5 @@
 .form-page{
-    background-image: linear-gradient(to top, #330867 0%, #2196f3 100%);
+    background-image: linear-gradient(to top, #0ff2fe 0%, #2196f3 100%);
     top: 0;
     bottom: 0;
     right: 0;
@@ -12,7 +12,7 @@
 
 .main-form{
     min-width: 250px;
-    min-height: 300px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     padding: 50px 20px;
@@ -25,4 +25,9 @@
 }
 .google:hover{
     color: $google-color;
+}
+
+.form-heading{
+    font-weight: 1000;
+    font-size: 32px;
 }
