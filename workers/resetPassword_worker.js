@@ -6,6 +6,8 @@ const resetPasswordMailer=require('../mailers/resetpassword');
 queue.process('resetpassword',function(job,user,done)
 {
     console.log("worker is doing job ",job.id);
-    resetMailer.resetPassword(resetDb,user);
+    console.log('resetdb',job.data);
+    console.log('user email',user.email);
+    resetPasswordMailer.resetPassword(job.data);
     done();
 });

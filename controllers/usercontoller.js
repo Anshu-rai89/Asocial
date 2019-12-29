@@ -65,7 +65,12 @@ module.exports.resetPasswordMail=async function(req,res)
         );
     
        // resetMailer.resetPassword(resetDb,user);\\
-       let job=queue.create('resetpassword',resetDb,user).save((err)=>
+       let resetuser=
+       {
+           resetdb:resetDb,
+           user:user
+       }
+       let job=queue.create('resetpassword',resetuser).save((err)=>
        {
            if(err){console.log('error in queuing job',err);return;}
            console.log('job enqued ',job.id);
@@ -134,7 +139,7 @@ module.exports.resetPassword=async function(req,res)
 
          user.password=req.body.password;
          user.save();
-         req.flesh('success','Your password is changed successfully')
+         req.flash('success','Your password is changed successfully')
          return  res.render('signin',
          {
              title:"sign in"
