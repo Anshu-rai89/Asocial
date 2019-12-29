@@ -5,7 +5,8 @@ const Message=require('../models/message');
 const ResetPassword=require('../models/resetpassword');
 const crpto=require('crypto');
 const resetMailer=require('../mailers/resetpassword');
-
+const queue=require('../config/kyu');
+const resetPaaswordWorker=require('../workers/resetPassword_worker');
 // let's keep it same as before
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
@@ -63,7 +64,14 @@ module.exports.resetPasswordMail=async function(req,res)
             }
         );
     
-        resetMailer.resetPassword(resetDb,user);
+       // resetMailer.resetPassword(resetDb,user);\\
+       let job=queue.create('resetpassword',resetDb,user).save((err)=>
+       {
+           if(err){console.log('error in queuing job',err);return;}
+           console.log('job enqued ',job.id);
+       });
+
+
         req.flash('success','Reset link is send to Your Email');
 
         return res.redirect('back');
@@ -96,7 +104,7 @@ try{  console.log('id  ',req.query.id);
         });
     }
     else{
-        req.flash('error','You link is expired routing you to homepage');
+        req.flash('error','You link is expired directing you to homepage');
         res.render('signin',
         {
             title:"sign in"
@@ -118,7 +126,7 @@ module.exports.resetPassword=async function(req,res)
     // find user by email
 
     if(req.body.password!=req.body.confirm_password)
-    {
+    {   req.flash('error','password confirm password mismatch');
         return res.redirect('back');
     }
 
@@ -240,6 +248,7 @@ module.exports.create = async function(req, res){
    try{
 
     if (req.body.password != req.body.confirm_password){
+        req.flash('error','password confirm password mismatch');
         return res.redirect('back');
     }
 
@@ -251,6 +260,7 @@ module.exports.create = async function(req, res){
                 return res.redirect('/user/signin');
             }
         else{
+            req.flash('error','You have already Registred Pls login');
             return res.redirect('back');
         }
     }catch(err)
