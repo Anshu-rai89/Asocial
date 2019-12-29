@@ -1,0 +1,28 @@
+.form-page{
+    background-image: linear-gradient(to top, #330867 0%, #2196f3 100%);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-form{
+    min-width: 250px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.google{
+    transition: 0.5s;
+}
+.google:hover{
+    color: $google-color;
+}

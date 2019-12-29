@@ -1,9 +1,15 @@
 @import "./base/base.scss";
+@import "./color.scss";
 @import "./chatbox.scss";
 @import "./footer.scss";
 @import "./header.scss";
 @import "./home.scss";
 @import "./user_profile.scss";
+@import "./shared/index.scss";
+@import "./misc.scss";
 
 // fontawesome icons
 @import "./third-party/fa-icons/scss/fontawesome.scss";
+
+// Pages
+@import "./form-page.scss";

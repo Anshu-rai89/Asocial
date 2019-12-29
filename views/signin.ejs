@@ -1,17 +1,30 @@
 
 <!-- <h1>Welcome to <%=title%> Page</h1> -->
-<div class="page-container">
-    <div class="signin-page">
+<div class="form-page">
+        <form action="/user/create-session" method="POST" class="main-form">
+            <div class="input-group m-b-20">
+                <button>
+                    <i class="fa fa-user"></i>
+                </button>
 
-        <form action="/user/create-session" method="POST">
-            <input type="email" name="email"  required placeholder="Your Email">
-            <input type="password"  name="password"  required placeholder="password">
-            <input type="submit" value="signin"  >
+                <input type="email" name="email"  required placeholder="Email">
+            </div>
+            <div class="input-group m-b-20">
+                <button>
+                    <i class="fa fa-lock"></i>
+                </button>
+                <input type="password"  name="password"  required placeholder="password">
+            </div>
+            <a href="/user/resetpassword/page" class="link m-b-10 white-text sm-text">Forgot Password?</a>
+            <input type="submit" value="signin"  class="button primary-background white-text m-b-20">
+
+            <div class="center white-text m-b-10">
+                Or Login with
+            </div>
+            <div class="center white-text">
+                <a href="/user/auth/google">
+                    <i class="fab fa-google google"></i>
+                </a>
+            </div>
         </form>
-        
-        
-        <p><a href="/user/auth/google">Signin/Signup Using Google</a></p> 
-        <a href="/user/resetpassword/page"><p>forgot password</p></a>
-
-    </div>    
-</div>
+</div>    
