@@ -33,7 +33,7 @@ app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
     debug: true,
-    outputStyle: 'extended',
+    outputStyle: 'compressed',
     prefix: '/css'
 }));
 app.use(express.static('./assets'));

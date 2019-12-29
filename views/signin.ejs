@@ -1,11 +1,17 @@
 
-<h1>Welcome to <%=title%> Page</h1>
-<form action="/user/create-session" method="POST">
-    <input type="email" name="email"  required placeholder="Your Email">
-    <input type="password"  name="password"  required placeholder="password">
-    <input type="submit" value="signin"  >
-</form>
+<!-- <h1>Welcome to <%=title%> Page</h1> -->
+<div class="page-container">
+    <div class="signin-page">
 
+        <form action="/user/create-session" method="POST">
+            <input type="email" name="email"  required placeholder="Your Email">
+            <input type="password"  name="password"  required placeholder="password">
+            <input type="submit" value="signin"  >
+        </form>
+        
+        
+        <p><a href="/user/auth/google">Signin/Signup Using Google</a></p> 
+        <a href="/user/resetpassword/page"><p>forgot password</p></a>
 
-<p><a href="/user/auth/google">Signin/Signup Using Google</a></p> 
-<a href="/user/resetpassword/page"><p>forgot password</p></a>
+    </div>    
+</div>
