@@ -1,13 +1,19 @@
 #layout-header{
     height: 60px;
     background: #2196f3;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
     nav{
         display: flex;
+        width: 100%;
         justify-content: space-between;
         align-items: center;
         padding: 0 10px;
         color: white;
         height: 100%;
+        max-width: $max-width;
 
         .mini-logo{
             p{

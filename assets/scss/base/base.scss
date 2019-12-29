@@ -1,3 +1,7 @@
+// variables
+$max-width: 1400px;
+
+
 *{
     margin: 0;
     padding: 0;
@@ -10,6 +14,9 @@ html , body{
 
 .main {
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 a{
