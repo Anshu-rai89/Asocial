@@ -9,8 +9,9 @@
 <% if (locals.user) {%>
 <section id="feed-posts">
     <h4>Posts</h4>
-    <form action="/post/create" id="post-form" method="POST">
+    <form action="/post/create" id="post-form" enctype ='multipart/form-data' method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
+        <input type="file" name="Post-file">
         <input type="submit" value="Post">
     </form>
 

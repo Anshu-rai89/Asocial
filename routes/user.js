@@ -21,6 +21,7 @@ router.get('/resetpassword/page',usercontoler.resetpasswordpage);
 router.post('/resetpassword/email',usercontoler.resetPasswordMail);
 router.get('/resetpassword/update',usercontoler.resetPasswodUpdatePage);
 router.post('/resetPassword',usercontoler.resetPassword);
+router.get('/removefriend',usercontoler.removeFreind);
 
 // router for google auth
 

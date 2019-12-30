@@ -5,11 +5,51 @@ const Like=require('../models/like');
 module.exports.create= async function(req,res)
 {  try 
     {
-        let post= await Post.create(
-    {
-    content:req.body.content,
-    user: req.user._id
-    });
+        console.log(req.body.content);
+      
+       
+    
+        // if(req.file)
+        //     {
+        //         console.log('detected a file');
+        //         postfile=Post.postfilepath + '/' +req.file.filename;
+        
+        //     }
+        
+
+        Post.uploadedPostFile(req,res,function(err)
+        {  if(err){console.log("Error in using multer in post",err);return;}
+            let content= req.body.content;
+            let user=  req.user._id;
+            let postfile;
+            if(req.file)
+            {
+                console.log('detected a file');
+               postfile=Post.postfilepath + '/' +req.file.filename;
+               console.log(postfile);
+            }
+             post=  Post.create(
+                {
+                    content:content,
+                    user:user,
+                    Postfile:postfile
+                  
+            
+                },function(err,post)
+                {
+                    if(err){console.log(err);return res.redirect(back);}
+                });
+            });
+        // });
+    //   //  console.log(postfile);
+    //     let post= await Post.create(
+    //         {
+    //             content:req.body.content,
+    //             user: req.user._id,
+    //             Postfile:Post.postfilepath + '/' +req.file.filename
+            
+
+    //         });
 
     if(req.xhr)
     {  // returning a json 

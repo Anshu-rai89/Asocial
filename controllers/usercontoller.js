@@ -4,9 +4,8 @@ const path=require('path');
 const Message=require('../models/message');
 const ResetPassword=require('../models/resetpassword');
 const crpto=require('crypto');
-const resetMailer=require('../mailers/resetpassword');
 const queue=require('../config/kyu');
-const resetPaaswordWorker=require('../workers/resetPassword_worker');
+const Freind=require('../models/freindship');
 // let's keep it same as before
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
@@ -148,8 +147,9 @@ module.exports.resetPassword=async function(req,res)
 
 module.exports.freindprofile=async function(req,res)
 {   try
-    {
+    {  
       let user=await User.findOne({name:req.query.type});
+      console.log(user);
 
       // finding the messages of the user from db
       let messages=await Message.findOne({id:req.query.id});
@@ -166,6 +166,39 @@ module.exports.freindprofile=async function(req,res)
     }
 
 
+}
+
+// function to remove freind
+module.exports.removeFreind=async function(req,res)
+{
+  try{
+    // find the user by email
+    // get user id and freind id from route
+
+    let freindship=await Freind.findByIdAndDelete(req.query.id);
+
+    // find the user whois freind 
+
+    let user= await User.findById(req.query.type);
+    console.log('user from which freind ',user);
+
+    let removeUser=
+    {
+        id:req.query.id
+    }
+   // removing the following user from freindship array
+    user.friendships.pull({$pull:removeUser});
+    user.save();
+
+    // removing freindshipfrom db
+   
+    req.flash('successs','User removed from your FriendList');
+    return res.redirect('back');
+    }catch(err)
+        {
+            console.log('error in removing freind',err);
+            return res.redirect('back');
+        }
 }
 
 module.exports.update= async function(req,res)
@@ -197,6 +230,10 @@ module.exports.update= async function(req,res)
              user.save();
              return res.redirect('back');
          });
+
+
+
+
                 
            
         }catch(err)
