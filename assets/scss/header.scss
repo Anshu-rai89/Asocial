@@ -1,11 +1,19 @@
 #layout-header{
+    height: 60px;
+    background: #2196f3;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
     nav{
         display: flex;
+        width: 100%;
         justify-content: space-between;
+        align-items: center;
         padding: 0 10px;
-        background: #2196f3;
         color: white;
-        box-shadow: 1px 1px 1px 1px lightgrey;
+        height: 100%;
+        max-width: $max-width;
 
         .mini-logo{
             p{
@@ -15,29 +23,10 @@
             }
         }
 
-        .search-header
-        {
-           
-            
-            border-radius: 30px;
-
-            
-            #searchbtn
-            {
-                background-color: white;
-            }
-           
-        }
-
-
         .auth-links{
-            ul{
-                margin: 5% 5px;
-                display: flex;
-
-                li{
-                    margin-right: 10px;
-                }
+            .item{
+                display: inline-block;
+                margin-right: 10px;
             }
         }
 

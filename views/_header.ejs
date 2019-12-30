@@ -1,7 +1,3 @@
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/css/user_profile.css">
-<link rel="stylesheet" href="/css/header.css">
 <header id="layout-header">
     <nav>
         <div class="mini-logo">
@@ -14,31 +10,30 @@
 
         <div class="search-header">
             <form id="search-form" action="/user/search"  method="POST">
-            <input type="email" name="email" placeholder="Your Email" required>
-            <button type="submit" id="searchbtn" ><i class="far fa-search" style="height: 100%;width:100%;"></i></button>
+                <div class="input-group search-header">
+                    <input type="email" name="email" placeholder="Search people using email id" required>
+                    <button type="submit" id="searchbtn" ><i class="fa fa-search"></i></button>
+                </div>
             </form>
             
         </div>
     
         <div class="auth-links">
-            <ul>
-                <% if (locals.user){ %>
-                <li>
+            <% if (locals.user){ %>
+                <div class="item">
                     <a href="/user/profile/<%=user._id%>">
                         <img id="profile-pic-head"src="<%=user.avatar%>" alt="<%=user.name%>"></a>
-                </li>
-                <li>
+
                     <a href="/user/signout">Sign Out</a>
-                </li>
-                <% }else{ %>
-                <li>
+                </div>
+            <% }else{ %>
+                <div class="item">
                     <a href="/user/signin">Sign In</a>
-                </li>
-                <li>
+                </div>
+                <div class="item">
                     <a href="/user/signup">Sign Up</a>
-                </li>
-        
-                <% } %>
-            </ul>
+                </div>
+            <% } %>
         </div>
     </nav>
+</header>

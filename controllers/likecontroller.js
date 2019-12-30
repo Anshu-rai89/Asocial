@@ -61,7 +61,7 @@ try
             message:"Request Successfull",
             data:
             {
-                delete_var:delete_var
+                delete_var: delete_var
             }
         });
 }catch(err){
