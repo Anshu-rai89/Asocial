@@ -244,6 +244,13 @@ module.exports.create = async function(req, res){
 
         if (!user){
            let newuser= await User.create(req.body);
+ 
+        
+        let job=queue.create('signup',newuser).save((err)=>
+        {
+            if(err){console.log('error in queuing job',err);return;}
+            console.log('job enqued ',job.id);
+        });
 
                 return res.redirect('/user/signin');
             }
