@@ -4,9 +4,8 @@
 <div id="home-container" class="home-container">
 <% if (locals.user) {%>
 <section id="feed-posts" class="feed-posts">
-    <h4>Posts</h4>
     <form action="/post/create" id="post-form" method="POST">
-        <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
+        <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
         <input type="submit" value="Post">
     </form>
 
@@ -28,7 +27,12 @@
 <aside class="sidebar" id="sidebar">
   <%if (locals.user){%>
     <div class="sidebar-container">
-      This is sidebar
+      <a href="/user/profile/<%=user._id%>" class="item">
+        <img src="<%=user.avatar%>" alt="<%=user.name%>" class="img">
+        <span>
+          <%=user.name-%>
+        </span>
+      </a>
     </div>
   <%}%>
 </aside>
@@ -36,7 +40,13 @@
 <aside class="friends-sidebar" id="friends-sidebar">
   <%if (locals.user){%>
     <div class="sidebar-container">
-      This is sidebar for friends
+      <ul>
+        <% for (freind of locals.user.friendships){%>
+          <li class="item">
+            <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind.name%>'> <%=freind.name%></a>
+          </li>
+      <% } %>
+      </ul>
     </div>
   <%}%>
 </aside>
