@@ -3,7 +3,7 @@
 
 <div id="home-container" class="home-container">
 <% if (locals.user) {%>
-<section id="feed-posts">
+<section id="feed-posts" class="feed-posts">
     <h4>Posts</h4>
     <form action="/post/create" id="post-form" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
@@ -11,11 +11,6 @@
     </form>
 
 <%}%>
-
-
-
-
-
 
 <div id="post-container" class="post-container">
     <ul>
@@ -29,7 +24,24 @@
 
 </section>
 
-<section id="Freind" class="friends">
+
+<aside class="sidebar" id="sidebar">
+  <%if (locals.user){%>
+    <div class="sidebar-container">
+      This is sidebar
+    </div>
+  <%}%>
+</aside>
+
+<aside class="friends-sidebar" id="friends-sidebar">
+  <%if (locals.user){%>
+    <div class="sidebar-container">
+      This is sidebar for friends
+    </div>
+  <%}%>
+</aside>
+
+<!--  <section id="Freind" class="friends">
 <h4>Freinds</h4>
   <%if (locals.user){%>
     
@@ -41,9 +53,10 @@
       </ul>
       <%}%>
       <%}%>
-</section>
+</section>  -->
 
-  <section id="user-friends" class="user-friends">
+
+  <!--<section id="user-friends" class="user-friends">
     <h4>Users</h4>
     <% for(u of all_users){%>
         <p>
@@ -53,6 +66,7 @@
     <% } %>
 
 </section>
+-->
 </div>
 
 

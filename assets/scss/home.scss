@@ -1,21 +1,28 @@
 .home-container{
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    position: relative;
     max-width: $max-width;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas: '. middle .';
 
-    .friends{
-        order: 1;
-        flex: 1;
+    .sidebar{
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        left: 0;
+        background-color: red;
     }
 
-    .post-container{
-        order: 2;
-        flex: 4;
-        padding: 20px
+    .post-container, .feed-posts{
+        grid-area: middle;
+        padding: 20px;
     }
 
-    .user-friends{
-        order: 3;
-        flex: 1;
+    .friends-sidebar{
+        right: 0;
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        background-color: green;
     }
 }
