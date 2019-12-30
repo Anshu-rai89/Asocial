@@ -1,11 +1,7 @@
 
-<link rel="stylesheet" href="/css/home.css">
 
-<link rel="stylesheet" href="/css/chatbox.css">
 
-<h1>Welcome to <%=title%> </h1>
-
-<div id="home-container">
+<div id="home-container" class="home-container">
 <% if (locals.user) {%>
 <section id="feed-posts">
     <h4>Posts</h4>
@@ -21,7 +17,7 @@
 
 
 
-<div id="post-container">
+<div id="post-container" class="post-container">
     <ul>
   
        <% for (post of posts) { %>
@@ -33,23 +29,21 @@
 
 </section>
 
-<section id="Freind">
+<section id="Freind" class="friends">
 <h4>Freinds</h4>
   <%if (locals.user){%>
     
     <% for (freind of locals.user.friendships){%>
       <ul>
-        <l1 >
+        <li >
             <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind.name%>'> <%=freind.name%></a>
-          
-            
         </li> 
       </ul>
       <%}%>
       <%}%>
 </section>
 
-  <section id="user-friends">
+  <section id="user-friends" class="user-friends">
     <h4>Users</h4>
     <% for(u of all_users){%>
         <p>

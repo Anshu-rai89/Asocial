@@ -1,21 +1,21 @@
-#home-container{
+.home-container{
     display: flex;
-    
-    #feed-posts{
-        width: 50%;
-        padding: 10px;
+    justify-content: space-around;
+    max-width: $max-width;
+
+    .friends{
+        order: 1;
+        flex: 1;
     }
 
-    #user-friends{
-        width: 30%;
-        padding: 10px;
-        border-left: 1px solid lightgrey;
-        height: 100%;
+    .post-container{
+        order: 2;
+        flex: 4;
+        padding: 20px
     }
-    #Freind
-    {
-        width: 20%;
-        border-left: 1px solid lightgrey;
 
+    .user-friends{
+        order: 3;
+        flex: 1;
     }
 }
