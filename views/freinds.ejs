@@ -5,6 +5,7 @@
 
 <p><%= profile_user.name %></p>
 <p><%= profile_user.email %></p>
+<a href="/user/removefriend/?id=<%=id%>&type=<%=locals.user.id %>"><p>UnFriend</p></a>
 <button id="chatbutton">Chat</button>
 
 <div style='display: none;'id="chat" >

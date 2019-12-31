@@ -1,13 +1,13 @@
 const nodemailer=require('../config/nodemailer');
 
-exports.resetPassword=(resetuser)=>
+exports.welocme=(user)=>
 {
-    let htmlstring=nodemailer.renderTemplate({resetuser:resetuser},'/users_mailer/forgotpassword.ejs');
+    let htmlstring=nodemailer.renderTemplate({user:user},'/users_mailer/welcome.ejs');
     nodemailer.transporter.sendMail(
         {   
-            from:'raianshu8991@gmail.com',
-            to:resetuser.user.email,
-            subject:'Reset Your Password',
+            from:'ansh.colossal@gmail.com',
+            to:user.email,
+            subject:'Welcome To Colossal',
             html:htmlstring
         },(err,info)=>
         {
