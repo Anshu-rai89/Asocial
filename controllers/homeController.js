@@ -1,6 +1,6 @@
 const Post=require('../models/post');
 const User =require('../models/user');
-const mailer=require('../mailers/comment_mailer');
+
 
 module.exports.home= async function(req,res)
 { 

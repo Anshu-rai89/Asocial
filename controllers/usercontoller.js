@@ -4,6 +4,7 @@ const path=require('path');
 const ResetPassword=require('../models/resetpassword');
 const crpto=require('crypto');
 const queue=require('../config/kyu');
+const welcomemailerworker=require('../workers/sigunup_welcome_worker');
 
 // let's keep it same as before
 module.exports.profile = function(req, res){
