@@ -3,20 +3,15 @@
 
 <div id="home-container" class="home-container">
 <% if (locals.user) {%>
-<section id="feed-posts">
-    <h4>Posts</h4>
-    <form action="/post/create" id="post-form" enctype ='multipart/form-data' method="POST">
-        <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
-        <input type="file" name="Post-file">
+
+<section id="feed-posts" class="feed-posts">
+    <form action="/post/create" id="post-form" method="POST">
+        <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
+
         <input type="submit" value="Post">
     </form>
 
 <%}%>
-
-
-
-
-
 
 <div id="post-container" class="post-container">
     <ul>
@@ -30,7 +25,35 @@
 
 </section>
 
-<section id="Freind" class="friends">
+
+<aside class="sidebar" id="sidebar">
+  <%if (locals.user){%>
+    <div class="sidebar-container">
+      <a href="/user/profile/<%=user._id%>" class="item">
+        <img src="<%=user.avatar%>" alt="<%=user.name%>" class="img">
+        <span>
+          <%=user.name-%>
+        </span>
+      </a>
+    </div>
+  <%}%>
+</aside>
+
+<aside class="friends-sidebar" id="friends-sidebar">
+  <%if (locals.user){%>
+    <div class="sidebar-container">
+      <ul>
+        <% for (freind of locals.user.friendships){%>
+          <li class="item">
+            <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind.name%>'> <%=freind.name%></a>
+          </li>
+      <% } %>
+      </ul>
+    </div>
+  <%}%>
+</aside>
+
+<!--  <section id="Freind" class="friends">
 <h4>Freinds</h4>
   <%if (locals.user){%>
     
@@ -42,9 +65,10 @@
       </ul>
       <%}%>
       <%}%>
-</section>
+</section>  -->
 
-  <section id="user-friends" class="user-friends">
+
+  <!--<section id="user-friends" class="user-friends">
     <h4>Users</h4>
     <% for(u of all_users){%>
         <p>
@@ -54,6 +78,7 @@
     <% } %>
 
 </section>
+-->
 </div>
 
 

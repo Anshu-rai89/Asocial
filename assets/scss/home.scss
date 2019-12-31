@@ -1,21 +1,61 @@
 .home-container{
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    position: relative;
     max-width: $max-width;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas: '. middle .';
 
-    .friends{
-        order: 1;
-        flex: 1;
+    .sidebar{
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        left: 0;
+        background-color: $sidebar-background;
+        padding-top: 30px;
+    }
+    .sidebar-container{
+        height: 100%;
+        overflow: auto;
+        ul{
+            list-style: none;
+        }
+
+        .item{
+            padding: 10px;    
+            display: flex;
+            align-items: center;
+        }
+
+        .img{
+           width: 50px;
+           height: 50px; 
+           border-radius: 50%;
+        }
+
+        .img+span{
+            margin-left: 5px;
+        }
+
+        span{
+            flex: 1;
+            color: #fff;
+        }
     }
 
-    .post-container{
-        order: 2;
-        flex: 4;
-        padding: 20px
+    .post-container, .feed-posts{
+        grid-area: middle;
+        padding: 20px;
     }
 
-    .user-friends{
-        order: 3;
-        flex: 1;
+    .friends-sidebar{
+        right: 0;
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        background-color: $friends-sidebar-color;
     }
+}
+
+.post-textarea{
+    resize: none;
 }

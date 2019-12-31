@@ -21,9 +21,6 @@
         <div class="auth-links">
             <% if (locals.user){ %>
                 <div class="item">
-                    <a href="/user/profile/<%=user._id%>">
-                        <img id="profile-pic-head"src="<%=user.avatar%>" alt="<%=user.name%>"></a>
-
                     <a href="/user/signout">Sign Out</a>
                 </div>
             <% }else{ %>
