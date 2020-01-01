@@ -199,7 +199,7 @@ module.exports.update= async function(req,res)
 
 
 module.exports.signin=function(req,res)
-{ if(req.isAuthenticated())  return res.redirect('back');
+{ if(req.isAuthenticated())  return createsession (req,res);
     res.render('signin',
     {
         title:"sign in"
