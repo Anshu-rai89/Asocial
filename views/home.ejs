@@ -34,7 +34,9 @@
       <a href="/user/profile/<%=user._id%>" class="item">
         <% if(user.avatar){%>
         <img  src='<%=user.avatar%>' alt='<%=user.name%>'class="img">
-        <%}%>
+        <%} else{%>
+          <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img'>
+          <%}%>
         <span>
           <%=user.name-%>
         </span>
