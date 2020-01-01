@@ -9,7 +9,7 @@ const freindcontroler=require('../controllers/freindshipcontroller');
 router.get('/profile/:id',passport.checkAuthentication,usercontoler.profile);
 router.get('/profile-freind',passport.checkAuthentication,freindcontroler.freindprofile);
 router.post('/update/:id',passport.checkAuthentication,usercontoler.update);
-router.post('/search',passport.checkAuthentication,usercontoler.search);
+router.get('/search',passport.checkAuthentication,usercontoler.search);
 router.get('/post',usercontoler.post);
 
 router.get('/signup',usercontoler.signup);

@@ -1,0 +1,20 @@
+
+
+
+<ul id="search-result">
+   <% for (user of users){%>
+   <a href="/user/profile/<%=user._id%>">
+    <li id='info'>
+       
+
+            <%if (user.avatar) {%>
+                <img id="profile-pic"src="<%=user.avatar%>">
+                <%} else{%>
+                
+                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" id="profile-pic">
+                <%}%>
+                <%=user.name%>
+ 
+    </li></a>
+    <%}%>
+</ul>
