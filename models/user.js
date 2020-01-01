@@ -44,7 +44,7 @@ let storage=multer.diskStorage(
         {
             cb(null,file.fieldname+'-'+Date.now());
         }
-    }
+    } 
 );
 
 // static to make them available for others

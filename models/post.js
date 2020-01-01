@@ -50,8 +50,8 @@ let storage=multer.diskStorage(
     }
 );
 
-// static to make them available for others
-postSchema.statics.uploadedPostFile=multer({storage:storage}).single('Post-file');
+// static to  make them available for others
+postSchema.statics.uploadPostFile=multer({storage:storage}).single('postfile');
 postSchema.statics.postfilepath=PostFile_PATH;
 const Post = mongoose.model('Post', postSchema);
 module.exports = Post;
