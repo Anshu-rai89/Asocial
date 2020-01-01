@@ -4,6 +4,7 @@
     max-width: $max-width;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: '. middle .';
+    width: 100%;
 
     .sidebar{
         position: fixed;
@@ -44,6 +45,9 @@
 
     .post-container, .feed-posts{
         grid-area: middle;
+    }
+
+    .feed-posts{
         padding: 20px;
     }
 

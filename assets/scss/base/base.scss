@@ -10,6 +10,7 @@ $max-width: 1400px;
 
 html , body{
     font-family: Muli;
+    background: $page-background;
 }
 
 .main {
@@ -23,4 +24,8 @@ html , body{
 a{
     text-decoration: none;
     color: inherit;
+}
+
+ul {
+    list-style: none;
 }

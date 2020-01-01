@@ -5,23 +5,25 @@
 <% if (locals.user) {%>
 
 <section id="feed-posts" class="feed-posts">
-    <form action="/post/create" id="post-form" method="POST">
-        <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
-
-        <input type="submit" value="Post">
-    </form>
+  <div class="card">
+    <div class="container">
+      <form action="/post/create" id="post-form" method="POST">
+          <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
+  
+          <input type="submit" value="Post">
+      </form>  
+    </div>
+  </div>
 
 <%}%>
 
 <div id="post-container" class="post-container">
-    <ul>
-  
-       <% for (post of posts) { %>
-         <%-include('_post')-%>
-          <% } %>
-    </ul>
-  
-  </div>
+  <ul>
+      <% for (post of posts) { %>
+        <%-include('_post')-%>
+        <% } %>
+  </ul>
+</div>
 
 </section>
 
