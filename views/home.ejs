@@ -33,7 +33,7 @@
     <div class="sidebar-container">
       <a href="/user/profile/<%=user._id%>" class="item">
         <% if(user.avatar){%>
-        <img i src='<%=user.avatar%>' alt='<%=user.name%>'class="img">
+        <img  src='<%=user.avatar%>' alt='<%=user.name%>'class="img">
         <%}%>
         <span>
           <%=user.name-%>
@@ -50,7 +50,12 @@
       <ul>
         <% for (freind of locals.user.friendships){%>
           <li class="item">
-            <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind.name%>'> <%=freind.name%></a>
+            <% if(freind.avatar) {%>
+              <img src="<%=freind.avatar%>" class='img'>
+              <% }else{%>
+                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img'>
+                <%}%>
+            <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind._id%>'> <%=freind.name%></a>
           </li>
       <% } %>
       </ul>

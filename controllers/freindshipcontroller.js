@@ -36,7 +36,9 @@ try{
 
             let friend={
                 name:touser.name,
-                id:`${otherfreind._id}`
+                id:`${otherfreind._id}`,
+                _id:touser._id,
+                avatar:touser.avatar
             }
             console.log('adding freind ',friend);
             fromuser.friendships.push(friend);
@@ -70,7 +72,9 @@ try{
                 });
           let friend={
               name:freindship.to_name,
-              id:`${freindship._id}`
+              id:`${freindship._id}`,
+              _id:touser._id,
+              avatar:touser.avatar
           }
            fromuser.friendships.push(friend);
            //console.log("updated freind ",user.freindships);
@@ -109,7 +113,7 @@ try{
 module.exports.freindprofile=async function(req,res)
 {   try
     {  
-      let user=await User.findOne({name:req.query.type});
+      let user=await User.findById(req.query.type);
       console.log(user);
 
       // finding the messages of the user from db
