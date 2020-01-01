@@ -1,6 +1,6 @@
 const nodemailer=require('../config/nodemailer');
 
-exports.welocme=(user)=>
+exports.welcome=(user)=>
 {
     let htmlstring=nodemailer.renderTemplate({user:user},'/users_mailer/welcome.ejs');
     nodemailer.transporter.sendMail(

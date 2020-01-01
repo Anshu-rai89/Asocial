@@ -1,5 +1,10 @@
-<img id="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
 
+<%if (profile_user.avatar) {%>
+<img id="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
+<%} else{%>
+
+<img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" id="profile-pic">
+<%}%>
 
 <% if(user.id == profile_user.id){ %>
     <!-- if user matches then show the form -->
