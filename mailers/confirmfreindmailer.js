@@ -1,13 +1,13 @@
 const nodemailer=require('../config/nodemailer');
 
-exports.resetPassword=(resetuser)=>
+exports.newFreind=(data)=>
 {
-    let htmlstring=nodemailer.renderTemplate({resetuser:resetuser},'/users_mailer/forgotpassword.ejs');
+    let htmlstring=nodemailer.renderTemplate({data:data},'/freinds/confirmfreinds.ejs');
     nodemailer.transporter.sendMail(
         {   
             from:'raianshu8991@gmail.com',
-            to:resetuser.user.email,
-            subject:'Reset Your Password',
+            to:data.to_user_email,
+            subject:'Confirm Freind Request',
             html:htmlstring
         },(err,info)=>
         {

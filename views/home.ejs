@@ -3,9 +3,11 @@
 
 <div id="home-container" class="home-container">
 <% if (locals.user) {%>
+
 <section id="feed-posts" class="feed-posts">
     <form action="/post/create" id="post-form" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
+
         <input type="submit" value="Post">
     </form>
 

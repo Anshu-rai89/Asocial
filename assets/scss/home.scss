@@ -4,6 +4,7 @@
     max-width: $max-width;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: '. middle .';
+    width: 100%;
 
     .sidebar{
         position: fixed;
