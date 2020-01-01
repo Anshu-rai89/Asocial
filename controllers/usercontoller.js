@@ -19,21 +19,27 @@ module.exports.profile = function(req, res){
 
 module.exports.search= async function(req,res)
 { try{ 
-       let user=await User.findOne({email:req.body.email});
+       
+      
+        const regex = new RegExp(escapeRegex(req.query.name), 'gi');
+        
+        
 
-       if(user)
-       {
-        console.log('user is ',user);
+        let user=await User.find({name:regex});
 
-        return res.render('user_profile', {
-            title: 'User Profile',
-            profile_user: user
+        if(user)
+        {
+        
+
+            return res.render('user_searchresult', {
+                title: 'Search Result',
+                users: user
         });
     }else{
         req.flash('error','user not found');
         return res.redirect('/');
     }
-        
+ 
 
      }catch(err)
      {
@@ -199,7 +205,7 @@ module.exports.update= async function(req,res)
 
 
 module.exports.signin=function(req,res)
-{ if(req.isAuthenticated())  return createsession (req,res);
+{ if(req.isAuthenticated())  return res.redirect('/');
     res.render('signin',
     {
         title:"sign in"
@@ -278,6 +284,8 @@ module.exports.signout=function(req,res)
     return res.redirect('/');
 }
 
+// function for fuzzy search using regular expressions 
 
-
-
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
