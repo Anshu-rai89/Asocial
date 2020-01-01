@@ -32,10 +32,13 @@
   <%if (locals.user){%>
     <div class="sidebar-container">
       <a href="/user/profile/<%=user._id%>" class="item">
-        <img src="<%=user.avatar%>" alt="<%=user.name%>" class="img">
+        <% if(user.avatar){%>
+        <img i src='<%=user.avatar%>' alt='<%=user.name%>'class="img">
+        <%}%>
         <span>
           <%=user.name-%>
         </span>
+        
       </a>
     </div>
   <%}%>
@@ -94,4 +97,6 @@
         console.log(this);
         let toggleLike = new ToggleLike(self);
     });
+     
+
 </script>
