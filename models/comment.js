@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-
+const multer=require('multer');
+const path=require('path');
+const Commentfile_Path=path.join('/uploads/users/avtars');
 
 const commentSchema = new mongoose.Schema({
     content: {
@@ -15,7 +17,7 @@ const commentSchema = new mongoose.Schema({
     {
         type:  mongoose.Schema.Types.ObjectId,
         ref: '  Post'
-    }, likes:[
+    },likes:[
         {
               type:mongoose.Schema.Types.ObjectId,
               ref:'Like'
@@ -24,6 +26,12 @@ const commentSchema = new mongoose.Schema({
 },{
     timestamps: true
 });
+
+
+
+
+
+
 
 const   Comment = mongoose.model('Comment', commentSchema);
 module.exports = Comment;

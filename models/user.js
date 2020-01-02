@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
 let storage=multer.diskStorage(
     {
         destination:function(req,file,cb)
-        {
+        {   console.log('in destination users',AVATAR_PATH);
             cb(null,path.join(__dirname,'..',AVATAR_PATH));
         },
         filename:function(req,file,cb)

@@ -10,12 +10,29 @@ module.exports.create=async function(req,res)
    let post=await Post.findById(req.body.post);
 
        if(post)
-       {
+       {  
+        var content_info;
+        var post_name;
+        var user_info;
+        var postfile; 
+        Comment.uploadedCommentfile(req,res,(err)=>
+        {  console.log(req.file);
+            if(err){console.log('errorin multer ',err);return ;}
+            content_info =req.body.content;
+            post_name=req.body.post;
+            user_info=req.user._id;
+            if(req.file)
+            {
+                postfile=Comment.commentfilepath +'/'+req.file.filename;
+            }
+
+        });
          let comment= await  Comment.create(
                {
-                  content:req.body.content,
-                  post:req.body.post,
-                  user:req.user._id 
+                  content:content_info,
+                  post:post_name,
+                  user:user_info,
+                  commentfile:postfile
                });
                    console.log(comment);
                    post.comment.push(comment);

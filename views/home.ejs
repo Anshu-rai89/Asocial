@@ -9,7 +9,8 @@
     <div class="container">
       <form action="/post/create" id="post-form" method="POST" enctype="multipart/form-data">
           <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
-          <input type='file' name='postfile'> 
+          <input type="file" name="postfile" id="img" style="display:none;">
+          <label for="img"> upload image</label>
           <input type="submit" value="Post">
       </form>  
     </div>
@@ -105,5 +106,6 @@
         let toggleLike = new ToggleLike(self);
     });
      
+   
 
 </script>

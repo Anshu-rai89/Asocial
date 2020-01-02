@@ -14,8 +14,8 @@ let transport=nodemailer.createTransport(
         secure:false,
         auth:
         {
-            user:'useyour own id',
-            pass:'use youw own password'
+            user:'use your own id ',
+            pass:'use your own password'
         }
     }
 );

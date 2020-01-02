@@ -2,6 +2,9 @@
     // method to submit the form data for new post using AJAX
     let createPost = function(){
         let newPostForm = $('#post-form');
+        let form=$('#post-form');
+        let formdata=new FormData(form);
+        console.log('form data is ',formdata);
 
         newPostForm.submit(function(e){
             e.preventDefault();
@@ -9,7 +12,13 @@
             $.ajax({
                 type: 'post',
                 url: '/post/create',
-                data: newPostForm.serialize(),
+                enctype: 'multipart/form-data',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+              
                 success: function(data){
                     //console.log(data.data);
                     let newPost = newPostDom(data.data.post);
@@ -53,7 +62,7 @@
                         <small>
                         ${ post.user.name }
                         </small>
-
+                        <img src="${post.Postfile}" class='img'>
                         </small>
                         <br>
                         <small>

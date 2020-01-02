@@ -1,6 +1,8 @@
 const Post=require('../models/post');
 const Comment=require('../models/comment');
 const Like=require('../models/like');
+const fs=require('fs');
+const path=require('path');
 
 module.exports.create= async function(req,res)
 {  try 
@@ -15,29 +17,47 @@ module.exports.create= async function(req,res)
         //         postfile=Post.postfilepath + '/' +req.file.filename;
         
         //     }
-            var content;
-            var user;
+            var posts;
+            var content_info;
+            var user_info;
             var postfile;
-           Post.uploadPostFile(req,res,function(err)
-            {   console.log(req.file);
-                 content=req.body.content;
-                 user=req.user._id;
-                 console.log(Post.postfilepath);
-                 if(req.file)
-                 {  console.log('file detected');
-                     postfile=Post.postfilepath+'/'+req.file.filename;
-                 }
-            });
+            let upload=await Post.uploadPostFile(req,res,function(err)
+                    {   console.log('in postcontroler',req.file);
+                        if(err){console.log(err);return;}
+                        content_info=req.body.content;
+                        user_info=req.user._id;
+                       
+                        if(req.file)
+                        {  
+                            postfile=Post.postfilepath+'/'+req.file.filename;
+                        }
+
+                        Post.create(
+                            {
+
+                                content:content_info,
+                                user:user_info,
+                                Postfile:postfile
+                            },function(err,post)
+                            {
+                                if(err){console.log(err);return;}
+                                console.log('succesfully added post',post);
+                                posts=post;
+
+                            }
+                        )
+                    });
 
             console.log(postfile);
-            let post=  Post.create(
-                {
-                    content:content,
-                    user:user,
-                    Postfile:postfile
+            console.log('creating post');
+            // let post= await Post.create(
+            //     {  
+            //         content:content_info,
+            //         user:user_info,
+            //         Postfile:postfile
                   
             
-                });
+            //     });
         // });
     //   //  console.log(postfile);
     //     let post= await Post.create(
@@ -54,13 +74,13 @@ module.exports.create= async function(req,res)
        // console.log("xhr request");
 
        //populating only nameof user 
-        post = await post.populate('user', 'name').execPopulate();
+        posts = await posts.populate('user', 'name').execPopulate();
         return res.status(200).json(
             
             {
                 data:
                 {
-                    post:post
+                    post:posts
             },message:'post a-created'
 
             });
@@ -87,7 +107,7 @@ module.exports.destroy= async function(req,res)
                // CHANGE :: delete the associated likes for the post and all its comments' likes too
                 await Like.deleteMany({likeable: post, onModel: 'Post'});
                 await Like.deleteMany({_id: {$in: post.comment}});
-
+                fs.unlinkSync(path.join(__dirname,'..',post.Postfile));
                 post.remove();
                 await  Comment.deleteMany({post:req.params.id});
 
