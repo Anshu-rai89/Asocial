@@ -25,7 +25,6 @@
                     </small>
                 <% } %>
                     <br>
-                    <br>
                 <%=post.content%>
 
                 <br>
@@ -34,10 +33,7 @@
                 <img src="<%=post.Postfile%>"  style="height: 250px; width:80%">
                 <%}%>
                
-              
-                    
-                    
-        <br>
+            <br>
        <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
         <small>
             <% if (locals.user){ %>
@@ -48,10 +44,11 @@
                 <%= post.likes.length %> Likes
             <% } %>
         </small>
-     
-      
+     <br>
+     <br>
+    
         <div class="comment-container">
-           
+           <h4>Comments</h4>
         <div class="comments-list">
            <ul id="post-comments-<%=post._id%>">
                <% for (c of post.comment){%>
@@ -60,7 +57,8 @@
     
            </ul>
           </div>
-
+<br>
+<br>
           <% if(locals.user) {%>
             <form id='post-<%= post._id %>-comments-form' action="/comment/create" method="POST">
                <input type="text" name="content"  placeholder="Type Here to add Comment">
