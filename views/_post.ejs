@@ -39,7 +39,7 @@
         <small>
             <% if (locals.user){ %>
                 <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                        <%= post.likes.length %> Likes
+                        <i id='like'class="fas fa-thumbs-up"></i> <%= post.likes.length %>
                 </a>
             <% }else{ %>
                 <%= post.likes.length %> Likes
@@ -62,10 +62,10 @@
 <br>
           <% if(locals.user) {%>
             <form id='post-<%= post._id %>-comments-form' action="/comment/create" method="POST">
-               <input type="text" name="content"  placeholder="Type Here to add Comment">
+               <input class='form-inp'type="text" name="content"  placeholder="Type Here to add Comment">
                <input type="hidden" name="post" value="<%=post._id%>">
               
-               <input type="submit" value="Add Comment">
+               <input class='btn' type="submit" value="Comment">
            </form>
               
             <%}%>

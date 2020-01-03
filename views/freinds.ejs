@@ -1,15 +1,18 @@
 
 
 <div id='freind'>
+  <div id='img'>
 <img class="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
-
+</div>
 <div id='details'>
 <p class='user-name'><%= profile_user.name %></p>
-<a href="/user/removefriend/?id=<%=id%>&type=<%=locals.user.id %>"><button class='UnFriend'>UnFriend</button></a>
+
 <br>
-<br>
+<p class='bio'><%=profile_user.bio%></p>
 <button id="chatbutton">Chat</button>
 </div>
+<a href="/user/removefriend/?id=<%=id%>&type=<%=locals.user.id %>"><button class='UnFriend'>UnFriend</button></a>
+
 <div style='display: none;'id="chat" >
 
     <%- include('_chat_box') -%>

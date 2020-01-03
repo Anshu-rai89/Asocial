@@ -161,13 +161,15 @@ module.exports.update= async function(req,res)
        try{
 
          let user= await   User.findById(req.params.id);
+         console.log('insilde update');
 
          User.uploadedAvatar(req,res,function(err)
          {
              if(err){console.log("****Error in multer**",err);return;}
 
              user.name=req.body.name;
-             user.email=req.body.email;
+             user.bio=req.body.bio;
+             console.log('updating bio',user.bio);
 
              if(req.file)
              {   // if user want to change old profile pic

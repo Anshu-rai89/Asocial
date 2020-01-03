@@ -19,7 +19,11 @@ const userSchema = new mongoose.Schema({
     },avatar:
     {
         type:String
-    },friendships: [
+    },bio:
+    {
+        type:String
+    },
+    friendships: [
           {
              type:Object
               

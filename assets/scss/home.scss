@@ -5,7 +5,15 @@
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-areas: '. middle .';
     width: 100%;
-
+    #like
+    {
+        color:blue;
+    }
+    .form-inp
+    {
+        border: none;
+        border-bottom: 1px solid lightgray;
+    }
     .sidebar{
         position: fixed;
         top: 60px;
@@ -41,7 +49,13 @@
             flex: 1;
             color: #fff;
         }
-
+        .bio
+        {
+            
+            font-weight: bolder;
+            color:white;
+            margin-left: 25%;
+        }
       
     }
 
@@ -51,6 +65,15 @@
 
     .feed-posts{
         padding: 20px;
+        .btn{
+            height: 30px;
+            width:90px;
+            background-color: blue;
+            color:white;
+            font-weight: bolder;
+            border: 2px solid blue;
+            margin-left:4%;
+        }
     }
 
     .friends-sidebar{
