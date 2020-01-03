@@ -1,0 +1,42 @@
+
+
+#profile-container
+{  height:80%;
+    width: 80%;
+    margin: 10%;
+    
+    
+    .profile-pic
+    {   display: inline-block;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+
+.user-name
+    {
+       display: inline-block;
+        color :blue;
+        font-weight: bolder;
+        font-size:15px;
+      margin-left: 10%;
+     
+       
+
+    }
+
+.add
+  
+{
+    display: inline-block;
+    height:30px;
+    width:90px;
+    background-color: blue;
+    color :white;
+    margin-left:10%;
+  
+   
+}
+
+   
+}

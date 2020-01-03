@@ -3,6 +3,7 @@
     width:50px;
     height: 50px;
     border-radius:50%;
+    margin-top:1%;
 }
 
 .title
@@ -15,6 +16,12 @@
 
 
 .delete-post-button
+{
+    margin-left:30%;
+    color: red;
+}
+
+.delete-comment-button
 {
     margin-left:30%;
     color: red;

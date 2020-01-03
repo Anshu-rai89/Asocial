@@ -1,0 +1,55 @@
+
+#freind
+{ 
+    height:80%;
+    width:80%;
+    margin:5%;
+    border: 1px solid lightgray;
+
+    .profile-pic
+    {
+        height: 100px;
+        width:100px;
+        border-radius: 50%;
+        margin-left:2%;
+        margin-top: 2%;
+    }
+
+    #details
+    {
+        margin-top:-6%;
+        margin-left:20%;
+    
+    .user-name
+        {
+        display: inline-block;
+            color :blue;
+            font-weight: bolder;
+            font-size:15px;
+           margin-left: 3%;
+        
+        }
+
+ 
+    #chatbutton
+    {
+        height: 30px;
+        width:70px;
+        background-color: green;
+        color:white;
+        font-weight: bolder;
+        margin-left:3%;border: 2px solid green;
+
+    }
+    .UnFriend
+    {  margin-left:40%;
+        color:white;
+        background-color: red;
+        height:30px;
+        width:90px;
+        font-weight: bolder;
+        border:2px solid red;
+    }
+}
+
+}
