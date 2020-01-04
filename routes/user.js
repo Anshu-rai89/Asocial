@@ -23,6 +23,7 @@ router.post('/resetpassword/email',usercontoler.resetPasswordMail);
 router.get('/resetpassword/update',usercontoler.resetPasswodUpdatePage);
 router.post('/resetPassword',usercontoler.resetPassword);
 router.get('/removefriend',freindcontroler.removeFreind);
+router.get('/chatbot',passport.checkAuthentication,usercontoler.chatbot)
 
 // router for google auth
 

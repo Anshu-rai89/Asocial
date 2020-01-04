@@ -235,6 +235,16 @@ module.exports.resetpasswordpage=function(req,res)
     });
 }
 
+// controller for chatbot route
+
+module.exports.chatbot=function(req,res)
+{
+    return res.render('chatbot',
+        {
+            title:'ChatBot'
+        }
+    );
+}
 module.exports.post=function(req,res)
 {
     res.render('post',{title:"post"});
