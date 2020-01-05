@@ -2,13 +2,22 @@
     // method to submit the form data for new post using AJAX
     let createPost = function(){
         let newPostForm = $('#post-form');
-        let form=$('#post-form');
-        let formdata=new FormData(form);
-        console.log('form data is ',formdata);
+       
 
         newPostForm.submit(function(e){
+            let file=$('#img')[0].files[0];
+            console.log(file);
+            if(file==true)
+           {
             e.preventDefault();
-
+            let content= $(' #txt').val();
+           
+            console.log('content is ',content);
+            console.log('file is ',file);
+            let formdata=new FormData();
+            formdata.append('content',content);
+            formdata.append('postfile',file);
+            console.log('form data is ',formdata);
             $.ajax({
                 type: 'post',
                 url: '/post/create',
@@ -44,6 +53,7 @@
                     console.log(error.responseText);
                 }
             });
+        }
         });
     }
 
@@ -51,19 +61,24 @@
     // method to create a post in DOM
     let newPostDom = function(post){
         return $(`<li id="post-${post._id}">
+               <div class="container">
                     <p>
-                        
                         <small>
-                            <a class="delete-post-button"  href="/post/destroy/${ post._id }">X</a>
+                        <img class="img-small"src="${post.user.avatar}" class='img-small'>
+                       
+                       <span class='title'>${post.user.name}</span>
+                            </small>
+                        <small>
+                            <a class="delete-post-button"  href="/post/destroy/${ post._id }">Delete</a>
                         </small>
+                        <br>
+                        <br>
                        
                         ${ post.content }
                         <br>
                         <small>
                         ${ post.user.name }
-                        </small>
-                        <img src="${post.Postfile}" class='img'>
-                        </small>
+                        
                         <br>
                         <small>
                             

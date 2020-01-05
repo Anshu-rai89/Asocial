@@ -7,92 +7,72 @@ const path=require('path');
 module.exports.create= async function(req,res)
 {  try 
     {
-        //console.log(req.file);
-      
        
-    
-        // if(req.file)
-        //     {
-        //         console.log('detected a file');
-        //         postfile=Post.postfilepath + '/' +req.file.filename;
-        
-        //     }
-            var posts;
-            var content_info;
-            var user_info;
-            var postfile;
-            let upload=await Post.uploadPostFile(req,res,function(err)
-                    {   console.log('in postcontroler',req.file);
+        var posts;
+        var postfiles;
+        var content_info;
+        var user_info;                
+        let upload=await Post.uploadPostFile(req,res,function(err)
+              {  
+                  if(err){console.log(err);return;}
+                  content_info=req.body.content;
+                  console.log('content is ',content_info);
+                  user_info=req.user._id;
+                 
+          
+                  if(req.file)
+                  {  console.log('in req file');
+                      postfiles=Post.postfilepath+'/'+req.file.filename;
+                    
+                  }
+                  Post.create(
+                    {
+
+                        content:content_info,
+                        user:user_info,
+                        Postfile:postfiles
+                    },function(err,post)
+                    {
                         if(err){console.log(err);return;}
-                        content_info=req.body.content;
-                        user_info=req.user._id;
-                       
-                        if(req.file)
-                        {  
-                            postfile=Post.postfilepath+'/'+req.file.filename;
-                        }
+                        console.log('succesfully added post',post);
+                        posts=post;
 
-                        Post.create(
-                            {
+                    }
+                );
 
-                                content:content_info,
-                                user:user_info,
-                                Postfile:postfile
-                            },function(err,post)
-                            {
-                                if(err){console.log(err);return;}
-                                console.log('succesfully added post',post);
-                                posts=post;
+                });
 
-                            }
-                        )
+        if(req.xhr)
+        {  // returning a json 
+                console.log("xhr request");
+             
+
+            //populating only nameof user 
+             posts = await posts.populate('user', 'name').execPopulate();
+                return res.status(200).json(
+                    
+                    {
+                        data:
+                        {
+                            post:posts
+                    },message:'post a-created'
+
                     });
-
-            console.log(postfile);
-            console.log('creating post');
-            // let post= await Post.create(
-            //     {  
-            //         content:content_info,
-            //         user:user_info,
-            //         Postfile:postfile
+            }
+                       
+                      
                   
-            
-            //     });
-        // });
-    //   //  console.log(postfile);
-    //     let post= await Post.create(
-    //         {
-    //             content:req.body.content,
-    //             user: req.user._id,
-    //             Postfile:Post.postfilepath + '/' +req.file.filename
-            
+                 
+           
 
-    //         });
-
-    if(req.xhr)
-    {  // returning a json 
-       // console.log("xhr request");
-
-       //populating only nameof user 
-        posts = await posts.populate('user', 'name').execPopulate();
-        return res.status(200).json(
-            
-            {
-                data:
-                {
-                    post:posts
-            },message:'post a-created'
-
-            });
-    }
-    req.flash('success','Post is created');
+                req.flash('success','Post is created');
+                    return res.redirect('back');
+        } catch(err)
+    {
+        req.flash('error',err);
+        console.log(err);
         return res.redirect('back');
-} catch(err)
-{
-    req.flash('error',err);
-    console.log(err);
-    return res.redirect('back');
-}
+    }
 }
 
 module.exports.destroy= async function(req,res)
