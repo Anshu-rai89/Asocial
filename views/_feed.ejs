@@ -1,15 +1,22 @@
+<script src="/js/feed.js"></script>
+
 <section id="feed-posts" class="feed-posts">
     <div class="card">
       <div class="container">
         <form action="/post/create" id="post-form" method="POST" enctype="multipart/form-data">
-            <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea"></textarea>
-            
-            <div class="upload-section">
-              <div class="file-upload">
-                <label for="postimage"><i class="fa fa-image"></i> <span>Image</span></label>
-                <input type="file" name="postimage" id="postimage" accept="image/*">
-              </div>
+
+          <div class="input-area">
+            <textarea name="content" cols="30" rows="5" placeholder="Want to share something..." class="post-textarea"></textarea>
+
+            <div class="uploaded-item-stack" id="uploaded-item-stack">
               
+            </div>
+            <div class="upload-section">
+              <div class="file-upload" tabindex="1">
+                <label for="postimage"><i class="fa fa-image"></i> <span>Image</span></label>
+                <input type="file" name="postimage" id="postimage" accept="image/*" onchange="checkUpload(event, 'uploaded-item-stack')" multiple>
+              </div>
+
               <div class="file-upload">
                 <label for="postvideo"><i class="fa fa-video"></i> <span>Video</span></label>
                 <input type="file" name="postvideo" id="postvideo" accept="video/*">
@@ -25,8 +32,9 @@
                 <input type="file" name="postfile" id="postfile">
               </div>
             </div>
+          </div>
 
-            <input type="submit" value="Post">
+            <input type="submit" value="Post" class="button">
         </form>  
       </div>
     </div>
