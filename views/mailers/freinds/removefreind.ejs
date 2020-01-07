@@ -4,7 +4,13 @@
     </p>
 
     <p>
-        <h1><%=data.from_user%></h1> <span>Have unfreind you We are sorry that Your freindshi broke </span>
+       
+        <%if (data.user_avatar) {%>
+            <img id="profile-pic"src="<%=data.user_avatar%>" class='img'>
+            <%} else{%>
+            
+            <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img'>
+            <%}%> <h1><%=data.from_user%></h1> <span>Have unfreind you We are sorry that Your freindshi broke </span>
         <br>
         <br>
 

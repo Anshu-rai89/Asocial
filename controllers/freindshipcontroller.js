@@ -87,7 +87,8 @@ try{
             from_user_name:fromuser.name,
             to_user_name:touser.name,
             to_user_email:touser.email,
-            from_user_email:fromuser.email
+            from_user_email:fromuser.email,
+            user_avatar:fromuser.avatar
         }
 
         let job= queue.create('confirm-freind',details).save((err)=>
@@ -210,7 +211,8 @@ module.exports.removeFreind=async function(req,res)
     {
         from_user:user.name,
         to_user_name:freindname,
-        to_user_email:freindemail
+        to_user_email:freindemail,
+        user_avatar:user.avatar
     }
     let job=queue.create('remove-freind',details).save((err)=>
     {

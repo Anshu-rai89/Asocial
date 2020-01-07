@@ -1,0 +1,46 @@
+#bot-container
+{
+    height:80%;
+    width: 80%;
+    margin:5%;
+    .title
+    {
+        text-align: center;
+        font-weight: bolder;
+        color :blue;
+    }
+    #img
+    {   
+        margin-top: 5%;
+        .bot-img
+        {
+            height:15git 0px;
+            width:150px;
+            border-radius: 50%;
+            
+        }
+    }
+
+    
+
+    #info1
+    {   margin-top:-8%;
+        margin-left:20%;
+        
+        .bot-info
+        {   
+            color:blue;
+            font-size:15px;
+            font-weight: bolder;
+            margin-bottom:2% ;
+           
+        }
+
+        .auth-info
+        {
+            margin-left:70%;
+            color:black;
+            font-weight: bolder;
+        }
+    }
+}

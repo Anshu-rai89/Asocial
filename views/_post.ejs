@@ -7,52 +7,49 @@
     
            <p>
 
+            
+
+                <small>
+                      
+            <%if (post.user.avatar) {%>
+                <img class="img-small"src="<%=post.user.avatar%>" class='img-small'>
+                <%} else{%>
+                
+                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img-small'>
+                <%}%>  <span class='title'><%=post.user.name%></span>
+                    </small>
+
                 <% if (locals.user && locals.user.id == post.user.id){ %>
                     <small>
                         <a class="delete-post-button"  href="/post/destroy/<%= post.id %>">Delete</a>
                     </small>
                 <% } %>
-
-                <small>
-                     
-            <%if (post.user.avatar) {%>
-                <img id="profile-pic"src="<%=post.user.avatar%>" class='img'>
-                <%} else{%>
-                
-                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img'>
-                <%}%>  <%=post.user.name%>
-                    </small>
                     <br>
                     <br>
                 <%=post.content%>
+
+                <br>
+                <br>
+                <%if(post.Postfile) {%>
+                <img src="<%=post.Postfile%>"  style="height: 300px; width:60%">
+                <%}%>
                
-              
-                    
-                    
-        <br>
+            <br>
        <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
         <small>
             <% if (locals.user){ %>
                 <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                        <%= post.likes.length %> Likes
+                        <i id='like'class="fas fa-thumbs-up"></i> <%= post.likes.length %>
                 </a>
             <% }else{ %>
                 <%= post.likes.length %> Likes
             <% } %>
         </small>
-     
-      
-        <div class="comment-container">
-            <% if(locals.user) {%>
-            <form id='post-<%= post._id %>-comments-form' action="/comment/create" method="POST">
-               <input type="text" name="content"  placeholder="Type Here to add Comment">
-               <input type="hidden" name="post" value="<%=post._id%>">
-               <input type="submit" value="Add Comment">
-           </form>
-              
-            <%}%>
-        
+     <br>
+     <br>
     
+        <div class="comment-container">
+           <small style='color:blue; font-style: italic;font-weight:bold;'>Comments</small>
         <div class="comments-list">
            <ul id="post-comments-<%=post._id%>">
                <% for (c of post.comment){%>
@@ -61,6 +58,17 @@
     
            </ul>
           </div>
+<br>
+<br>
+          <% if(locals.user) {%>
+            <form id='post-<%= post._id %>-comments-form' action="/comment/create" method="POST">
+               <input class='form-inp'type="text" name="content"  placeholder="Type Here to add Comment">
+               <input type="hidden" name="post" value="<%=post._id%>">
+              
+               <input class='btn' type="submit" value="Comment">
+           </form>
+              
+            <%}%>
        </div>
     </div>
    </li> 

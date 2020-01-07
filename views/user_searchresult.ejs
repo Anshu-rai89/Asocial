@@ -2,18 +2,19 @@
 
 
 <ul id="search-result">
-   <% for (user of users){%>
-   <a href="/user/profile/<%=user._id%>">
+   <% for (p_user of users){%>
+   <a href="/user/profile/<%=p_user._id%>">
     <li id='info'>
        
 
-            <%if (user.avatar) {%>
-                <img id="profile-pic"src="<%=user.avatar%>">
+            <%if (p_user.avatar) {%>
+                <img id="pic"src="<%=p_user.avatar%>">
                 <%} else{%>
                 
-                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" id="profile-pic">
+                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" id='pic'>
                 <%}%>
-                <%=user.name%>
+               <span class='title'> <%=p_user.name%></span>
+              <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'> <button id='add'>Add Freind</button></a>
  
     </li></a>
     <%}%>

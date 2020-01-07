@@ -1,0 +1,125 @@
+
+
+#profile-container
+{  height:80%;
+    width: 80%;
+    margin: 10%;
+    border:1px solid lightgray;
+  
+    #pic-container
+    {
+      display: inline-block;
+      margin: 2%;
+        
+        .profile-pic
+        {  
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            margin:2%;
+        }
+   }
+
+        
+
+        
+    #user-info
+    { 
+        
+        display: inline-block;
+      
+
+
+        .user-name
+        {
+            color :blue;
+            font-weight: bolder;
+            font-size:15px;
+            margin-left: 20%;
+        }
+    
+        
+
+        .bio
+        {
+            
+            height:40px;
+            margin:5%;
+            font-size:15px;
+            font-weight: bolder;
+            color:green;
+            
+        }
+    }
+
+    .add
+        
+        {
+            display: inline-block;
+            height:30px;
+            width:90px;
+            background-color: blue;
+            color :white;
+            margin-left:10%;
+        
+        
+        }
+
+    #update-form
+    {   display:inline-block;
+        height:250px;
+        width:30%;
+        border:2px solid lightgray;
+        margin-left:20%;
+        margin-top:-10%;
+    
+
+        #update-name
+        {
+            display: block;
+        
+            margin:3%;
+
+            #name-inp
+            {
+                display: inline-block;
+                border-top: none;
+                border-right: none;
+                border-left:none;
+                border-bottom: 1px solid lightgray;
+                margin:3%;
+                height:20px;
+                
+            }
+
+        }
+
+        #update-avatar
+        {
+            display: block;
+        
+            margin:3%;
+
+            #avatar-inp
+            {
+                display: inline-block;
+                border:none;
+                border-bottom: 1px solid lightgray;
+                margin:3%;
+            }
+        }
+
+        #update-btn
+        {
+            display: block;
+            height:30px;
+            width:90px;
+            background-color: blue;
+            color :white;
+            font-weight: bolder;
+            border: 2px solid blue;
+            margin:3%;
+        }
+    }
+   
+}

@@ -10,12 +10,14 @@ module.exports.create=async function(req,res)
    let post=await Post.findById(req.body.post);
 
        if(post)
-       {
+       {  
+      
          let comment= await  Comment.create(
                {
                   content:req.body.content,
                   post:req.body.post,
-                  user:req.user._id 
+                  user:req.user._id
+                 
                });
                    console.log(comment);
                    post.comment.push(comment);

@@ -1,23 +1,31 @@
-
+<div id='profile-container'>
+ <div id='pic-container'>   
 <%if (profile_user.avatar) {%>
-<img id="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
+<img class="profile-pic"src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>">
 <%} else{%>
 
-<img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" id="profile-pic">
+<img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="profile-pic">
 <%}%>
-
+</div>
 <% if(user.id == profile_user.id){ %>
     <!-- if user matches then show the form -->
+    <div id='update-form'>
     <form action="/user/update/<%= profile_user.id %>" enctype ='multipart/form-data' method="POST">
-        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
-        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
-        <input type="file" name='avatar' placeholder="Profile picture">
-        <input type="submit"  value="Update">
+     <div id='update-name'> <span style="display: inline-block;"><h4>Name</h4></span>  <input id ='name-inp'type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required></div>
+     <div id='update-name'> <span style="display: inline-block;"><h4>Bio</h4></span>  <input id ='name-inp'type="text" name="bio" placeholder="Add Bio"  required></div>
+       <div id='update-avatar'><span style="display: inline-block;"><h4>Avatar</h4></span>   <input type="file" name="avatar" id="img" style="display:none;">
+        <label id='avatar-inp' for="img"> <i class="fa fa-upload" aria-hidden="true"></i></label></div>
+        <input id='update-btn' type="submit"  value="Update">
     </form>
+    </div>
     
 <%}else{%>    
     <!-- else show only the profile info -->
-    <p><%= profile_user.name %></p>
-    <p><%= profile_user.email %></p>
-    <a href="/freind/add?id=<%=profile_user.id%>&name=<%=user.id%>">Add Freind</a>
+    <div id='user-info'>
+    <p class='user-name'><%= profile_user.name %></p>
+    <p class='bio'><%=profile_user.bio%></p>
+    </div>
+    <a class='add' href="/freind/add?id=<%=profile_user.id%>&name=<%=user.id%>">Add Freind</a>
+
 <%} %>
+    </div>

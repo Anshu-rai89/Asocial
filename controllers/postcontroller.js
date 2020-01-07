@@ -1,78 +1,78 @@
 const Post=require('../models/post');
 const Comment=require('../models/comment');
 const Like=require('../models/like');
+const fs=require('fs');
+const path=require('path');
 
 module.exports.create= async function(req,res)
 {  try 
     {
-        //console.log(req.file);
-      
        
-    
-        // if(req.file)
-        //     {
-        //         console.log('detected a file');
-        //         postfile=Post.postfilepath + '/' +req.file.filename;
-        
-        //     }
-            var content;
-            var user;
-            var postfile;
-           Post.uploadPostFile(req,res,function(err)
-            {   console.log(req.file);
-                 content=req.body.content;
-                 user=req.user._id;
-                 console.log(Post.postfilepath);
-                 if(req.file)
-                 {  console.log('file detected');
-                     postfile=Post.postfilepath+'/'+req.file.filename;
-                 }
-            });
+        var posts;
+        var postfiles;
+        var content_info;
+        var user_info;                
+        let upload=await Post.uploadPostFile(req,res,function(err)
+              {  
+                  if(err){console.log(err);return;}
+                  content_info=req.body.content;
+                  console.log('content is ',content_info);
+                  user_info=req.user._id;
+                 
+          
+                  if(req.file)
+                  {  console.log('in req file');
+                      postfiles=Post.postfilepath+'/'+req.file.filename;
+                    
+                  }
+                  Post.create(
+                    {
 
-            console.log(postfile);
-            let post=  Post.create(
-                {
-                    content:content,
-                    user:user,
-                    Postfile:postfile
-                  
-            
+                        content:content_info,
+                        user:user_info,
+                        Postfile:postfiles
+                    },function(err,post)
+                    {
+                        if(err){console.log(err);return;}
+                        console.log('succesfully added post',post);
+                        posts=post;
+
+                    }
+                );
+
                 });
-        // });
-    //   //  console.log(postfile);
-    //     let post= await Post.create(
-    //         {
-    //             content:req.body.content,
-    //             user: req.user._id,
-    //             Postfile:Post.postfilepath + '/' +req.file.filename
-            
 
-    //         });
+        if(req.xhr)
+        {  // returning a json 
+                console.log("xhr request");
+             
 
-    if(req.xhr)
-    {  // returning a json 
-       // console.log("xhr request");
+            //populating only nameof user 
+             posts = await posts.populate('user', 'name').execPopulate();
+                return res.status(200).json(
+                    
+                    {
+                        data:
+                        {
+                            post:posts
+                    },message:'post a-created'
 
-       //populating only nameof user 
-        post = await post.populate('user', 'name').execPopulate();
-        return res.status(200).json(
-            
-            {
-                data:
-                {
-                    post:post
-            },message:'post a-created'
+                    });
+            }
+                       
+                      
+                  
+                 
+           
 
-            });
-    }
-    req.flash('success','Post is created');
+                req.flash('success','Post is created');
+                    return res.redirect('back');
+        } catch(err)
+    {
+        req.flash('error',err);
+        console.log(err);
         return res.redirect('back');
-} catch(err)
-{
-    req.flash('error',err);
-    console.log(err);
-    return res.redirect('back');
-}
+    }
 }
 
 module.exports.destroy= async function(req,res)
@@ -87,7 +87,7 @@ module.exports.destroy= async function(req,res)
                // CHANGE :: delete the associated likes for the post and all its comments' likes too
                 await Like.deleteMany({likeable: post, onModel: 'Post'});
                 await Like.deleteMany({_id: {$in: post.comment}});
-
+               if(post.Postfile){ fs.unlinkSync(path.join(__dirname,'..',post.Postfile));}
                 post.remove();
                 await  Comment.deleteMany({post:req.params.id});
 

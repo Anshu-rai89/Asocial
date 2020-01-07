@@ -44,14 +44,16 @@ let storage=multer.diskStorage(
             cb(null,path.join(__dirname,'..',PostFile_PATH));
         },
         filename:function(req,file,cb)
-        {
+        {  
             cb(null,file.fieldname+'-'+Date.now());
         }
     }
 );
 
+
 // static to  make them available for others
 postSchema.statics.uploadPostFile=multer({storage:storage}).single('postfile');
 postSchema.statics.postfilepath=PostFile_PATH;
 const Post = mongoose.model('Post', postSchema);
+
 module.exports = Post;
