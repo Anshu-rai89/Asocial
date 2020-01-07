@@ -1,0 +1,14 @@
+<div class="sidebar-container">
+    <ul>
+      <% for (freind of locals.user.friendships){%>
+        <li class="item">
+          <% if(freind.avatar) {%>
+            <img src="<%=freind.avatar%>" class='img'>
+            <% }else{%>
+              <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img'>
+              <%}%>
+          <a href='/user/profile-freind/?id=<%=freind.id%>&type=<%=freind._id%>'> <%=freind.name%></a>
+        </li>
+    <% } %>
+    </ul>
+</div>
