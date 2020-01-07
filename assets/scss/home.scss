@@ -63,3 +63,24 @@
 .post-textarea{
     resize: none;
 }
+
+
+.feed-posts form{
+    display: flex;
+    flex-direction: column;
+
+    .upload-section{
+        display: flex;
+    }
+    .file-upload{
+        display: flex;
+
+        input{
+            display: none;
+        }
+        
+        label{
+            cursor: pointer;
+        }
+    }
+}
