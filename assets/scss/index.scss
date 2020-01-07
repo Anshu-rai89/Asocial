@@ -1,10 +1,5 @@
 @import "./color.scss";
 @import "./base/base.scss";
-@import "./chatbox.scss";
-@import "./footer.scss";
-@import "./header.scss";
-@import "./home.scss";
-@import "./user_profile.scss";
 @import "./shared/index.scss";
 @import "./misc.scss";
 
@@ -13,8 +8,3 @@
 
 // Pages
 @import "./form-page.scss";
-@import "post.scss";
-@import "search_result.scss";
-@import 'userprofile.scss';
-@import 'freind-page.scss';
-@import  'chatbot.scss';
