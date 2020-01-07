@@ -87,4 +87,60 @@
 
 .post-textarea{
     resize: none;
+    border: none;
+    margin-bottom: 8px;
+    font-family: Muli;
+}
+
+
+.feed-posts form{
+    display: flex;
+    flex-direction: column;
+
+    .input-area{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #aaa;
+        border-radius: 15px;
+        padding: 20px 15px 10px;
+        margin-bottom: 15px;
+    }
+
+    .upload-section{
+        display: flex;
+    }
+    .file-upload{
+        display: flex;
+        padding: 5px 13px;
+        background: #bbe1fa;
+        border-radius: 20px;
+        margin: 0 5px;
+        input{
+            display: none;
+        }
+        
+        label{
+            cursor: pointer;
+        }
+    }
+
+    .button{
+        padding: 5px;
+        border: none;
+        background: $primary-color;
+        color: #fff;
+        border-radius: 4px;
+    }
+}
+
+.uploaded-item-stack{
+    padding: 10px 0;
+
+    .upload-thumbnail{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin: 0 5px 10px 0;
+    }
 }
