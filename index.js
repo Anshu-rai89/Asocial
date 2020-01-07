@@ -2,7 +2,7 @@ const express=require('express');
 
 
 const app=express();
-const port=process.env.PORT;
+const port=8000;
 
 // using express layouts for creating views layout
 const expresslayout=require('express-ejs-layouts');
@@ -24,7 +24,7 @@ const customMware=require('./config/middleware');
 
 const chatSever=require('http').Server(app);
 const chatSocket=require('./config/chatsockcet').chatSocket(chatSever);
-const chatserverport=process.env.PORT;
+const chatserverport=5000;
 chatSever.listen(chatserverport);
 console.log('chatserver is listning at port 5000');
 
