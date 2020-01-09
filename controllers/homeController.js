@@ -14,7 +14,9 @@ module.exports.home= async function(req,res)
         console.log(myusers);
 
         let posts= await Post.find({user:{ $in:myusers}})
-            
+
+            .sort('-createdAt')
+            .reverse()
             .populate('user')
             .populate(
                 {

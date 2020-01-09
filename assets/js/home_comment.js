@@ -58,6 +58,7 @@ class PostComments{
     newCommentDom(comment){
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
         return $(`<li id="comment-${ comment._id }">
+        
                         <p>
                             
                            
@@ -70,8 +71,8 @@ class PostComments{
                             <small>
                             
                             <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
-                            <i id='like'class="fas fa-thumbs-up"></i> 0 
-                            </a>
+                            <i id='like'class="fas fa-thumbs-up"></i> </a> <span>0 </span>
+                            
                         
                         </small>
                         <small>

@@ -55,8 +55,7 @@
         <small>
             <% if (locals.user){ %>
                 <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                        <i id='like'class="fas fa-thumbs-up"></i> <%= post.likes.length %>
-                </a>
+                        <i id='like'class="fas fa-thumbs-up"></i></a> <span><%= post.likes.length %></span>
             <% }else{ %>
                 <i id='like'class="fas fa-thumbs-up"></i> <%= post.likes.length %> 
             <% } %>
@@ -67,6 +66,7 @@
         <div class="comment-container">
            <small style='color:blue; font-style: italic;font-weight:bold;'>Comments</small>
         <div class="comments-list">
+            <p>post.comment.length</p>
            <ul id="post-comments-<%=post._id%>">
                <% for (c of post.comment){%>
                   <%-include('_comment')-%>
