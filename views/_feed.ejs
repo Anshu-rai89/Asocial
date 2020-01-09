@@ -1,7 +1,8 @@
 <script src="/js/feed.js"></script>
 
 <section id="feed-posts" class="feed-posts">
-    <div class="card">
+   <% if(locals.user){%>
+  <div class="card">
       <div class="container">
         <form action="/post/create" id="post-form" method="POST" enctype="multipart/form-data">
 
@@ -38,7 +39,7 @@
         </form>  
       </div>
     </div>
-  
+  <%}%>
   <div id="post-container" class="post-container">
     <ul>
         <% for (post of posts) { %>
