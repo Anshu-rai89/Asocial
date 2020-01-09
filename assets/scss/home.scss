@@ -91,6 +91,7 @@
     border: none;
     margin-bottom: 8px;
     font-family: Muli;
+    background: transparent;
 }
 
 
@@ -101,10 +102,10 @@
     .input-area{
         display: flex;
         flex-direction: column;
-        border: 1px solid #aaa;
         border-radius: 15px;
         padding: 20px 15px 10px;
         margin-bottom: 15px;
+        background: #f7f7f7;
     }
 
     .upload-section{
