@@ -24,8 +24,8 @@ const customMware=require('./config/middleware');
 
 const chatSever=require('http').Server(app);
 const chatSocket=require('./config/chatsockcet').chatSocket(chatSever);
-const chatserverport=5000;
-chatSever.listen(chatserverport);
+
+chatSever.listen(5000);
 console.log('chatserver is listning at port 5000');
 
 // middlewares 
