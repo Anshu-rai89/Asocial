@@ -1,3 +1,8 @@
+<% 
+var post_time= new Date(post.updatedAt)
+var today = new Date()
+%>
+
 <li id="post-<%=post._id%>" class="card">
     <div class="container feed-container">       
    <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
@@ -22,7 +27,17 @@
     <%} else{%>
         <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img-small'>
     <%}%>  
-    <span class='title'><%=post.user.name%></span>
+    <div class='title'>
+        <div><%=post.user.name%></div>
+        <div class="date-time">
+            <% if (post_time.toLocaleDateString != today.toLocaleDateString) {%>
+                <%=post_time.toLocaleDateString('default', {weekday: 'short'})-%>, <%=post_time.getDate()-%> <%=post_time.toLocaleDateString('default', {month: 'short'})-%> <%=post_time.getYear() + 1900-%>
+            <%} else {%>
+                <%=post_time.toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})-%>
+            <%}%>
+        </div>
+    </div>
+    
     <% if (locals.user && locals.user.id == post.user.id){ %>
         <div class="drop-down">
             <i class="fa fa-ellipsis-v cursor"></i>
@@ -65,14 +80,16 @@
             <% if(locals.user) {%>
               <form id='post-<%= post._id %>-comments-form' action="/comment/create" method="POST">
                   <div class="input-group">
-                      <input class='form-inp'type="text" name="content" placeholder="Comment...">
-                      <button type="submit"><i class="fa fa-paper-plane"></i></button>
+                      <input type="text" name="content" placeholder="Comment...">
+                      <button type="submit" form="post-<%= post._id %>-comments-form" value="Submit"><i class="fa fa-paper-plane"></i></button>
+                      <input type="hidden" name="post" value="<%=post._id%>">
                   </div>
                 
              </form>
                 
             <%}%>
 
+            <% if (post.comment.length > 0) {%>
         <strong>Comments</strong>
            <ul id="post-comments-<%=post._id%>">
                <% for (c of post.comment){%>
@@ -80,6 +97,7 @@
                    <%}%>
     
            </ul>
+           <%}%>
           </div>
 <br>
 <br>
