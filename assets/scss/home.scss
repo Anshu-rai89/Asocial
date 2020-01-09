@@ -33,6 +33,8 @@
             padding: 10px;    
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .img{
@@ -41,13 +43,12 @@
            border-radius: 50%;
         }
         
-        .img+span{
+        .img+span, .img+a{
             margin-left: 5px;
         }
 
-        span{
+        span, a{
             flex: 1;
-            color: #fff;
         }
         .bio
         {

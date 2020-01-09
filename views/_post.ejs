@@ -1,56 +1,54 @@
 <li id="post-<%=post._id%>" class="card">
-    <div class="container">
-
-       
+    <div class="container feed-container">       
    <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
-   
+<p>
+<script>
 
+    let user=$('#one');
+    console.log(user);
+    let arr= user[0];
+    console.log('arr is ',arr);
+    let z=  arr.findIndex(x => x._id == post.user)
+    console.log(z);
+    if (user.frefriendships.findIndex(x => x._id == post.user)!=-1)
+    {
+        console.log('inside if ');
+    }
 
+</script>
+
+<div class="header">
+    <%if (post.user.avatar) {%>
+        <img class="img-small"src="<%=post.user.avatar%>" class='img-small'>
+    <%} else{%>
+        <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img-small'>
+    <%}%>  
+    <span class='title'><%=post.user.name%></span>
+    <% if (locals.user && locals.user.id == post.user.id){ %>
+        <!--<a class="delete-post-button"  href="/post/destroy/<%= post.id %>">Delete</a>-->
+        <div class="drop-down">
+            <i class="fa fa-ellipsis-v cursor"></i>
+            <ul>
+                <li class="hover-red"><a href="/post/destroy/<%= post.id %>"><i class="fa fa-trash"></i><span>Delete</span></a></li>
+            </ul>
+        </div>
+    <% } %>
     
-           <p>
-    <script>
-        
-           let user=$('#one');
-           console.log(user);
-           let arr= user[0];
-       console.log('arr is ',arr);
-         let z=  arr.findIndex(x => x._id == post.user)
-         console.log(z);
-        if (user.frefriendships.findIndex(x => x._id == post.user)!=-1)
-        {
-                console.log('inside if ');
-        }
-        
-        </script>
-            
-           
+</div>
 
-                <small>
-                      
-            <%if (post.user.avatar) {%>
-                <img class="img-small"src="<%=post.user.avatar%>" class='img-small'>
-                <%} else{%>
-                
-                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img-small'>
-                <%}%>  <span class='title'><%=post.user.name%></span>
-                    </small>
 
-                <% if (locals.user && locals.user.id == post.user.id){ %>
-                    <small>
-                        <a class="delete-post-button"  href="/post/destroy/<%= post.id %>">Delete</a>
-                    </small>
-                <% } %>
-                    <br>
-                    <br>
-                <%=post.content%>
+<br>
+<br>
 
-                <br>
-                <br>
-                <%if(post.Postfile) {%>
-                <img src="<%=post.Postfile%>"  style="height: 300px; width:60%">
-                <%}%>
-               
-            <br>
+<%=post.content%>
+
+    <br>
+    <br>
+    <%if(post.Postfile) {%>
+    <img src="<%=post.Postfile%>"  style="height: 300px; width:60%">
+    <%}%>
+    
+<br>
        <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
         <small>
             <% if (locals.user){ %>

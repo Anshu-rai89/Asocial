@@ -11,6 +11,7 @@ function checkUpload(event, target) {
             reader.readAsDataURL(event.target.files[i]);
         }
     }
+    console.log(event.target.files)
 }
 
 function appendElement(targetParent, imgSrc){
