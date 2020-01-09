@@ -59,8 +59,8 @@ try{
                  avatar:fromuser.avatar,
                  id:`${otherfreind._id}`,
              }
-            touser.request.splice(removerequest,1);
-            touser.save();
+            fromuser.request.splice(fromuser.request.indexOf(removerequest),1);
+            fromuser.save();
         
             console.log(fromuser.friendships);
    }
@@ -124,7 +124,7 @@ try{
         }
     }
 
-    req.flash('success','Added freind Successfully');
+   
 
         return res.redirect('/');
 
@@ -229,7 +229,7 @@ module.exports.removeFreind=async function(req,res)
             
              id:req.query.id
          }
-        user.request.splice(removerequest,1);
+        user.request.splice(user.request.indexOf(removerequest),1);
        
     // removing the following user from freindship array
         user.friendships.splice( user.friendships.indexOf(removeUser), 1 );
