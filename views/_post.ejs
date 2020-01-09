@@ -66,7 +66,7 @@
         <div class="comment-container">
            <small style='color:blue; font-style: italic;font-weight:bold;'>Comments</small>
         <div class="comments-list">
-            <p>post.comment.length</p>
+            <p><%=post.comment.length%></p>
            <ul id="post-comments-<%=post._id%>">
                <% for (c of post.comment){%>
                   <%-include('_comment')-%>
