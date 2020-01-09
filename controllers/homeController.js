@@ -5,7 +5,15 @@ const User =require('../models/user');
 module.exports.home= async function(req,res)
 { 
     try{
-        let posts= await Post.find({})
+        myusers=[];
+        myusers.push(req.user._id);
+        for( f of req.user.friendships)
+        {
+            myusers.push(f._id);
+        }
+        console.log(myusers);
+
+        let posts= await Post.find({user:{ $in:myusers}})
             
             .populate('user')
             .populate(
@@ -25,7 +33,9 @@ module.exports.home= async function(req,res)
                     path:'likes'
                 }
             );
+
          
+        
             let users=await User.find({}); 
                 return res.render('home',
                     {

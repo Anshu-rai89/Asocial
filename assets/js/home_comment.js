@@ -90,7 +90,7 @@ class PostComments{
             $.ajax({
                 type: 'get',
                 url: $(deleteLink).prop('href'),
-                success: function(data){
+                success: function(data){ 
                     $(`#comment-${data.data.comment_id}`).remove();
 
                     new Noty({

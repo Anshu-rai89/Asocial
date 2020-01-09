@@ -66,12 +66,19 @@ module.exports.destroy= async function(req,res)
   {
     let comment= await Comment.findById(req.params.id,);
     
-        if(comment.user==req.user.id)
+    let posts=await Post.findById(comment.post);
+   
+    
+        if((comment.user==req.user.id) ||(posts.user==req.user.id) ) 
         {
-            let commentid=req.post;
+            let commentid=comment.post;
+         
             comment.remove();
 
-          let post= Post.findByIdAndUpdate(commentid,{$pull:{comment:req.params.id}});
+          //let post= Post.findByIdAndUpdate(commentid,{$pull:{comment:comment._id}});
+
+          posts.comment.pull(req.params.id);
+          posts.save();
            
         // destroy the linked likeswith comment
         await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
