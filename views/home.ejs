@@ -4,12 +4,16 @@
 <div id="home-container" class="home-container">
 
   <%-include('_feed')-%>
-
+  
 
 
 <aside class="sidebar" id="sidebar">
   <%if (locals.user){%>
     <%-include('_sidebar')-%>
+    <% if (locals.user){ %>
+      
+    <% } %>
+    
 
   <%}%>
 </aside>
@@ -52,6 +56,7 @@
 <script src="/js/home_comment.js" ></script>
   <script src="/js/home_post.js"></script>
   <script src="/js/toggle-like.js"></script>
+
 <script>
     $('.toggle-like-button').each(function(){
 
