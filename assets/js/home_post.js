@@ -83,8 +83,8 @@
                         <small>
                             
                                 <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
-                                    0 Likes
-                                </a>
+                                  </a> <span>  0 </span>
+                                
                             
                         </small>
                     </p>
@@ -99,6 +99,7 @@
                 
                         <div class="post-comments-list">
                             <ul id="post-comments-${ post._id }">
+                            <p>${ post.comment.length }</p>
                                 
                             </ul>
                         </div>
