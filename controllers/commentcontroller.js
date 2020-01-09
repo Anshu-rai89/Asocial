@@ -22,7 +22,7 @@ module.exports.create=async function(req,res)
                    console.log(comment);
                    post.comment.push(comment);
                    post.save();
-                   comment= await comment.populate('user','name email').execPopulate();
+                   comment= await comment.populate('user','name email avatar').execPopulate();
                    if(req.xhr)
                    {
                   // comment= await comment.populate('user','name email').execPopulate();

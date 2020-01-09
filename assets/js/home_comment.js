@@ -34,7 +34,7 @@ class PostComments{
                 success: function(data){
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
-                    pSelf.deleteComment($(' .delete-comment-button', newComment));
+                    pSelf.deleteComment($('#delete-comment-button', newComment));
                     new ToggleLike($(' .toggle-like-button', newComment));
                     new Noty({
                         theme: 'relax',
@@ -54,31 +54,39 @@ class PostComments{
         });
     }
 
-
+    
+  
     newCommentDom(comment){
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
         return $(`<li id="comment-${ comment._id }">
+
+                <div class="comment-list">
+                <div class="header"> 
+                    <img src="${comment.user.avatar}" alt="${comment.user.name}-profile-pic" >
+                    <div style="flex: 1">
+                        <div>${comment.user.name}</div> 
+                    </div>
         
-                        <p>
-                            
-                           
-                            
-                           <h4> ${comment.content}</h4>
-                            <br>
-                            <small>
-                                ${comment.user.name}
-                            </small>
-                            <small>
-                            
-                            <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
-                            </a> 
-                            
-                        
-                        </small>
-                        <small>
-                        <a class="delete-comment-button" href="/comment/destroy/${comment._id}">delete</a>
-                    </small>
-                        </p>    
+                    <div class="drop-down" style="margin-top: -8px">
+                        <i class="fa fa-ellipsis-v cursor"></i>
+                        <ul>
+                            <li id="delete-comment-button"class="hover-red"><a href="/comment/destroy/${comment.id}"><i class="fa fa-trash"></i><span>Delete</span></a></li>    
+
+                        </ul>
+                        </div>
+                </div>
+
+                <div class="content">
+                 ${comment.content}
+                 </div> 
+                 <div>
+
+                 <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
+                <i id='like'class="fas fa-thumbs-up"></i>
+                0
+            </a>
+                 </div>
+                 </div>
 
                 </li>`);
     }
