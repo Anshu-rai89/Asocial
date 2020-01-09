@@ -5,17 +5,29 @@
    <% for (p_user of users){%>
    <a href="/user/profile/<%=p_user._id%>">
     <li id='info'>
-       
-
+        <div class='usercard col-lg-3'>
+             
             <%if (p_user.avatar) {%>
-                <img id="pic"src="<%=p_user.avatar%>">
-                <%} else{%>
-                
-                <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" id='pic'>
-                <%}%>
-               <span class='title'> <%=p_user.name%></span>
-              <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'> <button id='add'>Add Freind</button></a>
+            <img class=”usercard-image” src='<%=p_user.avatar%>'>
+            <%} else{%>
+                <img class=”usercard-image” src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
+                <%}%>   
+           
+            <h4 class=”usercard-name”><%=p_user.name%></h4>
+            <p class=”usercard-username”><%p_user.email%></p>
+            <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'>  <button class=”usercard-button accept”>
+            Accept
+            </button></a>
+            <button class=”usercard-button reject”>
+             Reject
+            </button>
+            <form action='' method='get' class='add_friend'>
+                    <input type='hidden' name='receiverName' class='receiverName' value=''>
+                    <input type='hidden' name='sender-name' class='sender-name' value='{{user.username}}'>
+                    <button type='submit' id=''  class='btn add accept friend-add'><i class=”fa fa-user”></i> Add Friend</button>
+                    </form>
+            </div>     
  
     </li></a>
-    <%}%>
+    <%}%>        
 </ul>

@@ -9,7 +9,7 @@ mongoose.connect(uri, {   useNewUrlParser: true,
 
 const db=mongoose.connection;
 
-db.on('error',console.error.bind(console,'Error in connecting to database'));
+db.on('error',console.error.bind(console,'Error in connecting to database','error'));
 
 db.once('open',function()
 {
