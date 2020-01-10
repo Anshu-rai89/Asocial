@@ -14,6 +14,7 @@ class PostComments{
         this.createComment(postId);
 
         let self = this;
+        $('.delete-comment-button').prop('href');
         // call for all the existing comments
         $(' .delete-comment-button', this.postContainer).each(function(){
             self.deleteComment($(this));
@@ -34,7 +35,7 @@ class PostComments{
                 success: function(data){
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
-                    pSelf.deleteComment($('#delete-comment-button', newComment));
+                    pSelf.deleteComment($('.delete-comment-button', newComment));
                     new ToggleLike($(' .toggle-like-button', newComment));
                     new Noty({
                         theme: 'relax',
@@ -70,7 +71,7 @@ class PostComments{
                     <div class="drop-down" style="margin-top: -8px">
                         <i class="fa fa-ellipsis-v cursor"></i>
                         <ul>
-                            <li id="delete-comment-button"class="hover-red"><a href="/comment/destroy/${comment.id}"><i class="fa fa-trash"></i><span>Delete</span></a></li>    
+                            <li class="hover-red"><a class="delete-comment-button" href="/comment/destroy/${comment._id}"><i class="fa fa-trash"></i><span>Delete</span></a></li>    
 
                         </ul>
                         </div>
@@ -95,11 +96,13 @@ class PostComments{
     deleteComment(deleteLink){
         $(deleteLink).click(function(e){
             e.preventDefault();
-
+          console.log('clicked on',deleteLink);
+          console.log($(deleteLink).prop('href'));
             $.ajax({
                 type: 'get',
                 url: $(deleteLink).prop('href'),
                 success: function(data){ 
+                    //console.log('comment remove sucess ',data);
                     $(`#comment-${data.data.comment_id}`).remove();
 
                     new Noty({

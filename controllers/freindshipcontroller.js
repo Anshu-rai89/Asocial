@@ -42,7 +42,7 @@ try{
             }
             console.log('adding freind ',friend);
             fromuser.friendships.push(friend);
-            fromuser.save();
+            //fromuser.save();
 
             let freind2={
                 name:fromuser.name,

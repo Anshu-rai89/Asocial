@@ -4,8 +4,9 @@
   "description": "My all social media web application",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod_start": "NODE_ENV=production nodemon index.js"
   },
   "keywords": [
     "social"
@@ -14,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "connect-flash": "^0.1.1",
-    "connect-mongo": "^2.0.3",
+    "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.4",
     "crypto": "^1.0.1",
     "ejs": "^2.7.4",
@@ -24,15 +25,16 @@
     "jsonwebtoken": "^8.5.1",
     "kue": "^0.11.6",
     "mongoose": "^5.7.5",
+    "morgan": "^1.9.1",
     "multer": "^1.4.1",
     "node-sass": "^4.13.0",
     "node-sass-middleware": "^0.11.0",
     "nodemailer": "^6.2.1",
-    "nodemon": "^2.0.2",
     "passport": "^0.4.0",
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "rotating-file-stream": "^2.0.1",
     "socket.io": "^2.3.0"
   }
 }

@@ -24,11 +24,17 @@ const customMware=require('./config/middleware');
 
 const chatSever=require('http').Server(app);
 const chatSocket=require('./config/chatsockcet').chatSocket(chatSever);
+const env=require('./config/enviorment');
+const path=require('path');
+const logger = require('morgan');
 
 chatSever.listen(5000);
 console.log('chatserver is listning at port 5000');
 
 // middlewares 
+
+if (env.name == 'development')
+{
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
@@ -36,11 +42,13 @@ app.use(sassMiddleware({
     outputStyle: 'compressed',
     prefix: '/css'
 }));
+}
 app.use(express.static('./assets'));
 
 // makeing uplod path avaialble for the browser
 
 app.use('/uploads',express.static(__dirname +'/uploads'));
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(expresslayout);
 app.use(express.urlencoded());
@@ -64,7 +72,7 @@ app.set('views','./views');
 app.use(session({
      name: 'Asocial',
      // TODO change the secret before deployment in production mode
-     secret: 'iamawsomeome',
+     secret: env. session_cookie_key,
      saveUninitialized: false,
      resave: false,
      cookie: {
