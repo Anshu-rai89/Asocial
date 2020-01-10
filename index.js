@@ -2,6 +2,7 @@ const express=require('express');
 
 
 const app=express();
+require('./config/viewhelpers')(app);
 const port=8000;
 
 // using express layouts for creating views layout
@@ -36,14 +37,14 @@ console.log('chatserver is listning at port 5000');
 if (env.name == 'development')
 {
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: './public/assets/scss',
+    dest: './public/assets/css',
     debug: true,
     outputStyle: 'compressed',
     prefix: '/css'
 }));
 }
-app.use(express.static('./assets'));
+app.use(express.static('./public/assets'));
 
 // makeing uplod path avaialble for the browser
 
