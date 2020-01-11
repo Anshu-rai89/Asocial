@@ -40,7 +40,7 @@ module.exports.home= async function(req,res)
             let users=await User.find({}); 
                 return res.render('home',
                     {
-                    title:"Asocial | home",
+                    title:" home",
                     posts:posts,
                     all_users:users
                     });

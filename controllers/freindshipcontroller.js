@@ -42,7 +42,8 @@ try{
             }
             console.log('adding freind ',friend);
             fromuser.friendships.push(friend);
-            //fromuser.save();
+            console.log('adding freind', friend,'in ',fromuser.name);
+            fromuser.save();
 
             let freind2={
                 name:fromuser.name,
@@ -52,6 +53,7 @@ try{
             }
 
             touser.friendships.push(freind2);
+            console.log('adding freind', friend2,'in ',touser.name);
             touser.save();
              let removerequest={
                  _id:fromuser._id,
