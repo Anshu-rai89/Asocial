@@ -20,7 +20,20 @@
     
           <img class='img' src="<%=r.avatar%>"> <span class='title'><%=r.name%></span>
           <br>
-         <a href='/freind/add?id=<%=r._id%>&name=<%=user.id%>'><button id="chatbutton">Accept</button></a> <a href="/user/removefriend/?id=<%=r.id%>&type=<%=locals.user.id %>"><button class='UnFriend'>Reject</button></a>
+         <a href='/freind/add?id=<%=r._id%>&name=<%=user.id%>'><button style=" height: 30px;
+          width:70px;
+          background-color: green;
+          color:white;
+          font-weight: bolder;
+          margin-left:3%;border: 2px solid green;">Accept</button></a> <a href="/user/removefriend/?id=<%=r.id%>&type=<%=locals.user.id %>"><button style=" display: inline-block;
+        margin-left:10%;
+        color:white;
+        background-color: red;
+        height:30px;
+        width:90px;
+        font-weight: bolder;
+        border:2px solid red;
+       ">Reject</button></a>
         </li>
       <%}%>
      </ul>
