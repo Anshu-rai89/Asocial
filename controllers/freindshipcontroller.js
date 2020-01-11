@@ -172,6 +172,10 @@ module.exports.removeFreind=async function(req,res)
     console.log(req.query.id);
     let freindship=await Freind.findById(req.query.id);
 
+    // deleting the associated chat with user
+    let msg=Message.findById(freindship._id);
+    msg.remove();
+
     // find the user whois freind 
  //   console.log('freind details',freindship);
 
