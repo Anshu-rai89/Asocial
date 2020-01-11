@@ -1,10 +1,10 @@
 #user-chat-box{
 	
     position: fixed;
-    bottom: 10px;
+    top:30%;
     right: 10px;
     border: 1px solid grey;
-    height: 90%;
+    height: 40%;
 	width: 300px;
 	background: white;
 	padding: 5px;
@@ -12,7 +12,7 @@
     #chat-messages-list{
     	list-style: none;
 	    padding: 10px;
-	    height: 95%;
+	    height: 90%;
 	    
 		overflow: auto;
 		
