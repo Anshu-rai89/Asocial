@@ -20,7 +20,7 @@
     
           <img class='img' src="<%=r.avatar%>"> <span class='title'><%=r.name%></span>
           <br>
-         <a href='/freind/add?id=<%=r._id%>&name=<%=user.id%>'><button class='btn'>Accept</button></a> <a href="/user/removefriend/?id=<%=r.id%>&type=<%=locals.user.id %>"><button>Reject</button></a>
+         <a href='/freind/add?id=<%=r._id%>&name=<%=user.id%>'><button id="chatbutton">Accept</button></a> <a href="/user/removefriend/?id=<%=r.id%>&type=<%=locals.user.id %>"><button class='UnFriend'>Reject</button></a>
         </li>
       <%}%>
      </ul>
