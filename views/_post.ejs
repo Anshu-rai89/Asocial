@@ -67,7 +67,7 @@ var today = new Date()
     </div>
     <% if (locals.user){ %>
         <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                <i id='like'class="fas fa-thumbs-up"></i></a> <span><%= post.likes.length %></span>
+                <i id='like'class="fas fa-thumbs-up"></i><%= post.likes.length %></a>
     <% }else{ %>
         <i id='like'class="fas fa-thumbs-up"></i> <%= post.likes.length %> 
     <% } %>
