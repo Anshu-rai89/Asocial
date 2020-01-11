@@ -40,20 +40,20 @@ try{
                 _id:touser._id,
                 avatar:touser.avatar
             }
-            console.log('adding freind ',friend);
+          
             fromuser.friendships.push(friend);
-            console.log('adding freind', friend,'in ',fromuser.name);
-            fromuser.save();
+           // console.log('adding freind', friend,'in ',fromuser.name);
+            //fromuser.save();
 
-            let freind2={
-                name:fromuser.name,
-                id:`${otherfreind._id}`,
-                _id:fromuser._id,
-                avatar:fromuser.avatar
-            }
-
-            touser.friendships.push(freind2);
-            console.log('adding freind', friend2,'in ',touser.name);
+           // var otherfreind=
+             //console.log('other freindis ',freind2);
+           touser.friendships.push({
+            name:fromuser.name,
+            id:`${otherfreind._id}`,
+            _id:fromuser._id,
+            avatar:fromuser.avatar
+        });
+            
             touser.save();
              let removerequest={
                  _id:fromuser._id,
@@ -61,10 +61,11 @@ try{
                  avatar:fromuser.avatar,
                  id:`${otherfreind._id}`,
              }
+          //   console.log('removing ',removerequest,'from',fromuser.name);
             fromuser.request.splice(fromuser.request.indexOf(removerequest),1);
             fromuser.save();
-        
-            console.log(fromuser.friendships);
+         
+           // console.log(fromuser.friendships);
    }
 
 
@@ -79,7 +80,7 @@ try{
             to_user:req.query.id,
            
         });
-    console.log('checking ',existingfreindship);
+  //  console.log('checking ',existingfreindship);
         if(!existingfreindship)
         {
             // create it 
@@ -172,10 +173,10 @@ module.exports.removeFreind=async function(req,res)
     let freindship=await Freind.findById(req.query.id);
 
     // find the user whois freind 
-    console.log('freind details',freindship);
+ //   console.log('freind details',freindship);
 
     let user= await User.findById(req.query.type);
-    console.log('user from which freind ',user);
+  //  console.log('user from which freind ',user);
         var freindname;
         var freindemail;
 
@@ -193,8 +194,8 @@ module.exports.removeFreind=async function(req,res)
                     name:user.name,
                     id:req.query.id
                 }
-                console.log('removing user',removeuser);
-             console.log(' from',otheruser.name)
+             //   console.log('removing user',removeuser);
+          //   console.log(' from',otheruser.name)
             otheruser.friendships.splice(otheruser.friendships.indexOf(removeuser), 1);
             otheruser.save();
             
@@ -211,8 +212,8 @@ module.exports.removeFreind=async function(req,res)
                  name:user.name,
                  id:req.query.id
              }
-            console.log('removing user',removeuser);
-             console.log(' from',freinduser.name)
+           // console.log('removing user',removeuser);
+           //  console.log(' from',freinduser.name)
              freinduser.friendships.splice(freinduser.friendships.indexOf(removeuser), 1);
              freinduser.save();
              

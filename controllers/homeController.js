@@ -11,7 +11,7 @@ module.exports.home= async function(req,res)
         {
             myusers.push(f._id);
         }
-        console.log(myusers);
+      
 
         let posts= await Post.find({user:{ $in:myusers}})
 
