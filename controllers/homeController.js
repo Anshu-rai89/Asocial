@@ -1,7 +1,13 @@
 const Post=require('../models/post');
 const User =require('../models/user');
 
-
+module.exports.welcome=function(req,res)
+{
+    return res.render('welcome',
+    {
+        title:'welcome'
+    });
+}
 module.exports.home= async function(req,res)
 { 
     try{
