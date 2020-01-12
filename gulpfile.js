@@ -6,8 +6,8 @@ const rev = require('gulp-rev');
 const uglify = require('gulp-uglify-es').default;
 const imagemin = require('gulp-imagemin');
 const del = require('del');
-const consolidate = require('gulp-consolidate');
-const iconfont = require('gulp-iconfont');
+// const consolidate = require('gulp-consolidate');
+// const iconfont = require('gulp-iconfont');
 
 
 
@@ -29,30 +29,30 @@ gulp.task('css', function(done){
     done();
 });
 
-gulp.task('iconfont', function () {
-    console.log('minifying webfonts');
-        gulp.src('./assets/**/*.+(svg|ttf|woff|woff2')
-         .pipe(iconfont({
-             fontName: 'iconfont',
-             formats: ['ttf', 'eot', 'woff', 'woff2'],
-             appendCodepoints: true,
-             appendUnicode: false,
-             normalize: true,
-             fontHeight: 1000,
-             centerHorizontally: true
-         }))
-         .on('glyphs', function (glyphs, options) {
-             gulp.src('./assets/scss/**/*.scss')
-                 .pipe(consolidate('underscore', {
-                     glyphs: glyphs,
-                     fontName: options.fontName,
-                     fontDate: new Date().getTime()
-                 }))
-                 .pipe(gulp.dest('./public/assets'));
-         })
-         .pipe(gulp.dest('./public/assets'));
-         done();
- });
+// gulp.task('iconfont', function () {
+//     console.log('minifying webfonts');
+//         gulp.src('./assets/**/*.+(svg|ttf|woff|woff2')
+//          .pipe(iconfont({
+//              fontName: 'iconfont',
+//              formats: ['ttf', 'eot', 'woff', 'woff2'],
+//              appendCodepoints: true,
+//              appendUnicode: false,
+//              normalize: true,
+//              fontHeight: 1000,
+//              centerHorizontally: true
+//          }))
+//          .on('glyphs', function (glyphs, options) {
+//              gulp.src('./assets/scss/**/*.scss')
+//                  .pipe(consolidate('underscore', {
+//                      glyphs: glyphs,
+//                      fontName: options.fontName,
+//                      fontDate: new Date().getTime()
+//                  }))
+//                  .pipe(gulp.dest('./public/assets'));
+//          })
+//          .pipe(gulp.dest('./public/assets'));
+//          done();
+//  });
 
 
 gulp.task('js', function(done){
