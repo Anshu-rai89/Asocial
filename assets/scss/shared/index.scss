@@ -93,12 +93,11 @@
         padding: 8px 13px;
         font-size: 14px;
 
-        cursor: pointer;
         a{
             display: block;
-        }
-        &.hover-red:hover{
-            color: #f0134d;
+            &.hover-red:hover{
+                color: #f0134d;
+            }
         }
 
         i{
