@@ -3,6 +3,7 @@ const JwtStrategy=require('passport-jwt').Strategy;
 const ExtractJWT=require('passport-jwt').ExtractJwt;
 
 const User=require('../models/user');
+const env=require('../config/enviorment');
 
 
 // craetuing option for jwt to read header
@@ -10,7 +11,7 @@ const User=require('../models/user');
 let opts =
 {
     jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken,
-    secretOrKey:'Asocial'
+    secretOrKey:env.jwt_secret_key
 }
 
 

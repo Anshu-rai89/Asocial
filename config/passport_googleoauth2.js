@@ -2,6 +2,7 @@ const passport=require('passport');
 const googleStartegy=require('passport-google-oauth').OAuth2Strategy;
 const crypto=require('crypto');
 const User=require('../models/user');
+const env=require('../config/enviorment');
 
 
 
@@ -10,9 +11,9 @@ const User=require('../models/user');
 // tell passport to use google strategy 
 
 passport.use(new googleStartegy({
-    clientID:"228308553197-0vbd2ojop2b94jtehkd1h1kv33voj3o9.apps.googleusercontent.com",                          // use your own clinet id
-    clientSecret:"Rq85F4nRPTph4PL5-SP_s8ap",                      // use yourown token
-    callbackURL:"http://localhost:8000/user/auth/google/callback",       
+    clientID:env.google_auth_clientID,                          // use your own clinet id
+    clientSecret: env.google_auth_clientSecret,                      // use yourown token
+    callbackURL:env.google_callbackurl       
 },
 function(accessToken, refreshToken, profile,done)
 {

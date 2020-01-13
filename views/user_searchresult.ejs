@@ -1,33 +1,39 @@
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <ul id="search-result">
-   <% for (p_user of users){%>
-   <a href="/user/profile/<%=p_user._id%>">
-    <li id='info'>
-        <div class='usercard col-lg-3'>
-             
-            <%if (p_user.avatar) {%>
-            <img class=”usercard-image” src='<%=p_user.avatar%>'>
-            <%} else{%>
-                <img class=”usercard-image” src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
-                <%}%>   
+    <% for (p_user of users){%>
+    <a href="/user/profile/<%=p_user._id%>">
+     <li id='info'>
+         <div class='usercard col-lg-30'>
+              
+             <%if (p_user.avatar) {%>
+             <img class='usercard-image' src='<%=p_user.avatar%>'>
+             <%} else{%>
+                 <img class='usercard-image' src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
+                 <%}%>   
+            
+             <h4 class='usercard-name'><%=p_user.name%></h4>
+             <p class='usercard-username'><%p_user.email%></p>
+
+             <%var check%>
+             <% for (f of user.friendships){%>
+                
+                 
+                 <%if(f._id==p_user.id){%>
+                     <%check=true%>
+                     <%}%>
+                    
+                 <%}%>
+                 <%if(check){%>
+                     <p class='usercard-button accept'>Connected</p>
+                     <%}else{%>
            
-            <h4 class=”usercard-name”><%=p_user.name%></h4>
-            <p class=”usercard-username”><%p_user.email%></p>
-            <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'>  <button class=”usercard-button accept”>
-            Accept
-            </button></a>
-            <button class=”usercard-button reject”>
-             Reject
-            </button>
-            <form action='' method='get' class='add_friend'>
-                    <input type='hidden' name='receiverName' class='receiverName' value=''>
-                    <input type='hidden' name='sender-name' class='sender-name' value='{{user.username}}'>
-                    <button type='submit' id=''  class='btn add accept friend-add'><i class=”fa fa-user”></i> Add Friend</button>
-                    </form>
-            </div>     
- 
-    </li></a>
-    <%}%>        
-</ul>
+                     <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'>   <button type='submit' id=''  class='usercard-button accept'><i class='fa fa-user'></i> Add Friend</button></a>
+                     <%}%>
+             </div>     
+  
+     </li></a>
+     <%}%>   
+
+ </ul>

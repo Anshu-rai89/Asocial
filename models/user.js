@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
     {
         type:String
     },
+    request:
+    [ {
+        type:Object
+      }
+    ],
     friendships: [
           {
              type:Object

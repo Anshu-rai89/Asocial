@@ -1,7 +1,13 @@
 const Post=require('../models/post');
 const User =require('../models/user');
 
-
+module.exports.welcome=function(req,res)
+{
+    return res.render('welcome',
+    {
+        title:'welcome'
+    });
+}
 module.exports.home= async function(req,res)
 { 
     try{
@@ -11,7 +17,7 @@ module.exports.home= async function(req,res)
         {
             myusers.push(f._id);
         }
-        console.log(myusers);
+      
 
         let posts= await Post.find({user:{ $in:myusers}})
 
@@ -40,7 +46,7 @@ module.exports.home= async function(req,res)
             let users=await User.find({}); 
                 return res.render('home',
                     {
-                    title:"Asocial | home",
+                    title:" home",
                     posts:posts,
                     all_users:users
                     });

@@ -5,7 +5,7 @@ class ChatEngine
         this.chatBoxId=$(`#${chatBoxId}`);
         this.userEmail=userEmail;
         this.chatRoom=chatRoom;
-        this.socket=io.connect('http://localhost:5000');
+        this.socket=io.connect('http://3.81.51.218:5000');
 
         if(this.userEmail)
         {
@@ -23,7 +23,7 @@ class ChatEngine
             {
                 user_email:self.userEmail,
               
-                chatroom:`${self.chatRoom}`
+                chatroom:`${self.chatRoom}` 
             });
 
 
@@ -35,6 +35,7 @@ class ChatEngine
 
         $('#send-message').click(function(){
             let msg = $('#chat-message-input').val();
+            $('#chat-message-input').text('');
             console.log(msg);
 
             if (msg != ''){
@@ -65,9 +66,7 @@ class ChatEngine
                 'html': data.message
             }));
 
-            newMessage.append($('<sub>', {
-                'html': data.user_email
-            }));
+           
 
             newMessage.addClass(messageType);
 
