@@ -44,6 +44,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "nodemon": "^2.0.2"
   }
 }

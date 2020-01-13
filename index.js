@@ -36,15 +36,19 @@ console.log('chatserver is listning at port 5000');
 
 if (env.name == 'development')
 {
-app.use(sassMiddleware({
-    src: './public/assets/scss',
-    dest: './public/assets/css',
-    debug: true,
-    outputStyle: 'compressed',
-    prefix: '/css'
-}));
+    app.use(sassMiddleware({
+        src: './public/assets/scss',
+        dest: './public/assets/css',
+        debug: true,
+        outputStyle: 'compressed',
+        prefix: '/css'
+    }));
+
+    app.use(express.static('./assets'));
+
+} else {
+    app.use(express.static('./public/assets'));
 }
-app.use(express.static('./public/assets'));
 
 // makeing uplod path avaialble for the browser
 
