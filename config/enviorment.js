@@ -33,7 +33,7 @@ const development=
     },
     google_auth_clientID:"228308553197-0vbd2ojop2b94jtehkd1h1kv33voj3o9.apps.googleusercontent.com",                          // use your own clinet id
    google_auth_clientSecret:"Rq85F4nRPTph4PL5-SP_s8ap",                      // use yourown token
-    google_callbackurl:"http://localhost:8000/user/auth/google/callback", 
+    google_callbackurl:"http://theco:8000/user/auth/google/callback", 
     jwt_secret_key: 'Asocial',
     morgan: {
         mode: 'dev',
