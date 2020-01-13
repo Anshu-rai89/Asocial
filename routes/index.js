@@ -5,7 +5,7 @@ const router=express.Router();
 const passport=require('passport');
 const homecontroler=require('../controllers/homeController');
 
-
+//router.get('/',homecontroler.welcome);
 router.get('/',passport.checkAuthentication,homecontroler.home);
 
 router.use('/user',require('./user'));
