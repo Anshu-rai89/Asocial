@@ -13,7 +13,7 @@ const env=require('../config/enviorment');
 passport.use(new googleStartegy({
     clientID:env.google_auth_clientID,                          // use your own clinet id
     clientSecret: env.google_auth_clientSecret,                      // use yourown token
-    callbackURL:env. google_callbackurl       
+    callbackURL:env.google_callbackurl       
 },
 function(accessToken, refreshToken, profile,done)
 {
