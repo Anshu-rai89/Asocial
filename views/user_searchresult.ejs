@@ -18,9 +18,11 @@
                         <p class='usercard-username'><%p_user.email%></p>
                     </div>
                     displaying
-                    <%var check%>
-                    <% for (f of user.friendships){%>
+                    <%let check%>
+                    <% for (f of locals.user.friendships){%>
+                       
                         <%if(f._id==p_user.id){%>
+                            
                             <%check=true%>
                             <%break%>>
                         <%}%>
