@@ -44,7 +44,7 @@ if (env.name == 'development')
         prefix: '/css'
     }));
 
-    app.use(express.static('./assets'));
+    app.use(express.static('./public/assets'));
 
 } else {
     app.use(sassMiddleware({
