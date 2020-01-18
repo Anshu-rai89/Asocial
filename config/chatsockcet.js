@@ -1,5 +1,6 @@
 const Message=require('../models/message');
 
+
 module.exports.chatSocket=function(serverSocket)
 {
     let io=require('socket.io')(serverSocket);
@@ -20,6 +21,7 @@ module.exports.chatSocket=function(serverSocket)
             io.in(data.chatroom).emit('user-joined',data);
 
         });
+
 
         socket.on('send_message', function(data){
             Message.findOne({id:data.chatroom},function(err,msg)

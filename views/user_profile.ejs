@@ -25,7 +25,24 @@
     <p class='user-name'><%= profile_user.name %></p>
     <p class='bio'><%=profile_user.bio%></p>
     </div>
-    <a class='add' href="/freind/add?id=<%=profile_user.id%>&name=<%=user.id%>">Add Freind</a>
-
+    <%var check%>
+    <% for (f of user.friendships){%>
+       
+        
+        <%if(f._id==profile_user.id){%>
+            <%check=true%>
+            <%}%>
+           
+        <%}%>
+        <%if(check){%>
+            <p class='add' style='background-color:green; color: white;'>Connected</p>
+            <%}else{%>
+    <a id='addfreind' class='add' href="/freind/add?id=<%=profile_user.id%>&name=<%=user.id%>">Add Freind</a>
+    <%}%>
+     
+        
+    
+      </div>
 <%} %>
     </div>
+  

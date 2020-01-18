@@ -33,6 +33,8 @@
             padding: 10px;    
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .img{
@@ -41,13 +43,12 @@
            border-radius: 50%;
         }
         
-        .img+span{
+        .img+span, .img+a{
             margin-left: 5px;
         }
 
-        span{
+        span, a{
             flex: 1;
-            color: #fff;
         }
         .bio
         {
@@ -90,6 +91,7 @@
     border: none;
     margin-bottom: 8px;
     font-family: Muli;
+    background: transparent;
 }
 
 
@@ -100,10 +102,10 @@
     .input-area{
         display: flex;
         flex-direction: column;
-        border: 1px solid #aaa;
         border-radius: 15px;
         padding: 20px 15px 10px;
         margin-bottom: 15px;
+        background: #f7f7f7;
     }
 
     .upload-section{

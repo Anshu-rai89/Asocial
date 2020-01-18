@@ -39,4 +39,70 @@
     .container{
         padding: 12px;
     }
+
+    .header{
+        display: flex;
+        align-items: center;
+
+        .title{
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .img-small{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+    }
+}
+
+
+.drop-down{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    
+    & > i{
+        padding: 8px 13px;
+        border-radius: 8px 8px 0 0;
+    }
+    ul{
+        position: absolute;
+        display: none;
+        right: 0;
+        bottom: -28px;
+        background: #eee;
+        border-radius: 8px 0 8px 8px;
+        width: 150px;
+    }
+
+    &:hover{
+        width: 150px;
+        ul {
+            display: block;
+        }
+
+        i {
+            background: #eee;
+        }
+    }
+
+    li{
+        padding: 8px 13px;
+        font-size: 14px;
+
+        cursor: pointer;
+        a{
+            display: block;
+        }
+        &.hover-red:hover{
+            color: #f0134d;
+        }
+
+        i{
+            margin-right: 10px;
+        }
+    }
 }

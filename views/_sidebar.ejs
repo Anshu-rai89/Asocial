@@ -5,9 +5,38 @@
       <%} else{%>
         <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class='img'>
         <%}%>
-      <span>
+      <span class="white-text">
         <%=user.name-%>
       </span>
+
       
     </a>
+    <br>
+    <br>
+    <%if(locals.user.request){%>
+      <ul >
+      <% for (r of locals.user.request){%>
+        <li>
+    
+          <img class='img' src="<%=r.avatar%>"> <span class='title'><%=r.name%></span>
+          <br>
+         <a href='/freind/add?id=<%=r._id%>&name=<%=user.id%>'><button style=" height: 30px;
+          width:70px;
+          background-color: green;
+          color:white;
+          font-weight: bolder;
+          margin-left:3%;border: 2px solid green;">Accept</button></a> <a href="/user/removefriend/?id=<%=r.id%>&type=<%=locals.user.id %>"><button style=" display: inline-block;
+        margin-left:10%;
+        color:white;
+        background-color: red;
+        height:30px;
+        width:60px;
+        font-weight: bolder;
+        margin-top:2%;
+        border:2px solid red;
+       ">Reject</button></a>
+        </li>
+      <%}%>
+     </ul>
+     <%}%>
   </div>

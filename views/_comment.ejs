@@ -1,31 +1,45 @@
-<li id="comment-<%= c._id %>">
-  
-    <p>
-       <h4> <%=c.content%></h4>
-       
-        <br>
-        <small>
-        <%=c.user.name%>
-        </small>
-<br>
-         <!--  display the likes of this comment, if the user is logged in, then show the link to toggle likes, else, just show the count -->
-           
-            <small>
-                <% if (locals.user){ %>
-                    <a class="toggle-like-button" data-likes="<%= c.likes.length %>" href="/likes/toggle/?id=<%=c._id%>&type=Comment">
-                            <i id='like'class="fas fa-thumbs-up"></i> </a> <span><%= c.likes.length %></span>
-                    
-                <% }else{ %>
-                    <i id='like'class="fas fa-thumbs-up"></i>    <%= c.likes.length %> 
-                <% } %>
-            </small>
+<% 
+var post_time= new Date(c.updatedAt)
+var today = new Date()
+%>
+<li id="comment-<%= c._id %>" style="margin-top: 10px;">
+<div class="comment-list">
+    <div class="header"> 
+        <img src="<%=c.user.avatar-%>" alt="<%=c.user.name-%>-profile-pic" />
+        <div style="flex: 1">
+            <div><%=c.user.name-%></div>
+            <div class="date-time">
+                <% if (post_time.toLocaleDateString != today.toLocaleDateString) {%>
+                    <%=post_time.toLocaleDateString('default', {weekday: 'short'})-%>, <%=post_time.getDate()-%> <%=post_time.toLocaleDateString('default', {month: 'short'})-%> <%=post_time.getYear() + 1900-%>
+                <%} else {%>
+                    <%=post_time.toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})-%>
+                <%}%>
+            </div>
+        </div>
+        <% if (locals.user && (locals.user.id==c.user._id || locals.user.id==post.user._id)) {%>
+            <div class="drop-down" style="margin-top: -8px">
+                <i class="fa fa-ellipsis-v cursor"></i>
+                <ul>
+                    <li class="hover-red"><a  class='delete-comment-button'href="/comment/destroy/<%=c.id%>"><i class="fa fa-trash"></i><span>Delete</span></a></li>
+                </ul>
+            </div>
+        <%}%>
+    </div>
+    <div class="content">
+        <%=c.content-%>
+    </div>
 
-              
-   
-    <% if (locals.user && (locals.user.id==c.user._id || locals.user.id==post.user._id)) {%>
-        
-        <small > <a class="delete-comment-button"href="/comment/destroy/<%=c.id%>">Delete</a></small>
-       <%}%>
-          
-    </p>
- </li>
+    <div class="post-bottom">
+        <% if (locals.user){ %>
+            <a class="toggle-like-button" data-likes="<%= c.likes.length %>" href="/likes/toggle/?id=<%=c._id%>&type=Comment">
+                <i id='like'class="fas fa-thumbs-up"></i>
+                <%= c.likes.length %>
+            </a>
+        <% }else{ %>
+            <i id='like'class="fas fa-thumbs-up"></i><%= c.likes.length %> 
+        <% } %>
+    </div>
+</div>
+
+<!--  display the likes of this comment, if the user is logged in, then show the link to toggle likes, else, just show the count -->
+</li>

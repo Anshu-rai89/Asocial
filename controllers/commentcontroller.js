@@ -22,7 +22,7 @@ module.exports.create=async function(req,res)
                    console.log(comment);
                    post.comment.push(comment);
                    post.save();
-                   comment= await comment.populate('user','name email').execPopulate();
+                   comment= await comment.populate('user','name email avatar').execPopulate();
                    if(req.xhr)
                    {
                   // comment= await comment.populate('user','name email').execPopulate();
@@ -67,11 +67,11 @@ module.exports.destroy= async function(req,res)
     let comment= await Comment.findById(req.params.id,);
     
     let posts=await Post.findById(comment.post);
-   
+   console.log('delteing comment',comment);
     
         if((comment.user==req.user.id) ||(posts.user==req.user.id) ) 
         {
-            let commentid=comment.post;
+            //let commentid=comment.post;
          
             comment.remove();
 

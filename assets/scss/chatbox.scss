@@ -1,9 +1,10 @@
 #user-chat-box{
+	
     position: fixed;
-    bottom: 10px;
+    top:30%;
     right: 10px;
     border: 1px solid grey;
-    height: 350px;
+    height: 40%;
 	width: 300px;
 	background: white;
 	padding: 5px;
@@ -11,8 +12,8 @@
     #chat-messages-list{
     	list-style: none;
 	    padding: 10px;
-	    height: 70%;
-	    background-color:lightgrey;
+	    height: 90%;
+	    
 		overflow: auto;
 		
 

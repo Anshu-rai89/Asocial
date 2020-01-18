@@ -1,4 +1,4 @@
-<script src="/js/feed.js"></script>
+<script src="<%=assetPath('js/feed.js')%>"></script>
 
 <section id="feed-posts" class="feed-posts">
    <% if(locals.user){%>
@@ -7,7 +7,7 @@
         <form action="/post/create" id="post-form" method="POST" enctype="multipart/form-data">
 
           <div class="input-area">
-            <textarea name="content" cols="30" rows="5" placeholder="Want to share something..." class="post-textarea"></textarea>
+            <textarea name="content" cols="30" rows="3" placeholder="Want to share something..." class="post-textarea" required></textarea>
 
             <div class="uploaded-item-stack" id="uploaded-item-stack">
               
@@ -15,7 +15,7 @@
             <div class="upload-section">
               <div class="file-upload" tabindex="1">
                 <label for="postimage"><i class="fa fa-image"></i> <span>Image</span></label>
-                <input type="file" name="postfile" id="postimage" >
+                <input type="file" name="postfile" id="postimage" onchange="checkUpload(event, 'uploaded-item-stack')">
               </div>
 
               <div class="file-upload">
