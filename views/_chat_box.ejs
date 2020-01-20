@@ -1,26 +1,60 @@
-<% if (locals.user){ %>
-	<div id="user-chat-box">
-		<ul id="chat-messages-list">
-			<% if (msgs) {%>
-			<% for (m of msgs.message){ %>
-			 <% if(m.sender!=locals.user.email){%>
-			<li class="other-message">
-				<span><%=m.msg%></span>
-			</li>
-			<%} else {%>
-			
-			<li class="self-message">
-			   <span><%=m.msg%></span>
-				
-			</li>
-			<%}%>
-		   <%}%>
-		   <%}%>
-		</ul>
-		<div id="chat-message-input-container">
-			<input id="chat-message-input" placeholder="Type message here">
-			<button id="send-message">Send</button>
-		</div>
+<div class="chatbox-container" id="chat" >
+	<% if (locals.user){ %>
+		<div id="user-chat-box">
+			<div class="heading">
+				<span class="name"><%=locals.user.friendships[0].name%></span>
+				<span class="icon" id="chat-close"><i class="fa fa-times"></i></span>
+			</div>
+			<ul id="chat-messages-list">
+				<% if (msgs) {%>
+					<% for (m of msgs.message){ %>
+						<% if(m.sender!=locals.user.email){%>
+							<li class="other-message">
+								<div><%=m.msg%></div>
+							</li>
+						<%} else {%>
+						
+							<li class="self-message">
+								<div><%=m.msg%></div>	
+							</li>
+						<%}%>
+					<%}%>
+			   <%}%>
 
-	</div>
-<% } %>
+			   <li class="other-message">
+					<div>This is a test mesg</div>
+				</li>
+			</ul>
+			<div id="chat-message-input-container" class="input-group">
+				<input id="chat-message-input" type="text" placeholder="Message"/>
+				<button id="send-message" type="submit">
+					<i class="fa fa-paper-plane"></i>
+				</button>
+			</div>
+	
+		</div>
+	<% } %>
+</div>
+
+
+<script>
+	$('#chatbutton').click(function(){
+		   $('#chat').toggleClass('show');
+		   var chatbox = document.getElementById('chat-message-input');
+		   chatbox.value = '';
+
+		   var chatlist = document.getElementById('chat-messages-list');
+		   chatlist.scrollBy(0, chatlist.scrollHeight);
+		}
+	);
+	$('#chat-close').click(function(){
+		$('#chat').toggleClass('show');
+		var chatbox = document.getElementById('chat-message-input');
+		chatbox.value = '';
+
+		var chatlist = document.getElementById('chat-messages-list');
+		chatlist.scrollBy(0, chatlist.scrollHeight);
+	 }
+ );
+</script>
+	
