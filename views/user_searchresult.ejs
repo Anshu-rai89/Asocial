@@ -16,12 +16,13 @@
              <h4 class='usercard-name'><%=p_user.name%></h4>
              <p class='usercard-username'><%p_user.email%></p>
 
-             <%var check%>
+             <%let check%>
              <% for (f of user.friendships){%>
                 
                  
                  <%if(f._id==p_user.id){%>
                      <%check=true%>
+                     <%break%>
                      <%}%>
                     
                  <%}%>
