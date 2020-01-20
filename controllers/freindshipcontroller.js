@@ -171,7 +171,7 @@ module.exports.removeFreind=async function(req,res)
     // get user id and freind id from route
     console.log(req.query.id);
     let freindship=await Freind.findById(req.query.id);
-
+    console.log(freindship);
     // deleting the associated chat with user
     let msg=Message.findById(freindship._id);
     msg.remove();
@@ -192,14 +192,17 @@ module.exports.removeFreind=async function(req,res)
 
             let otheruser=await User.findById(freindship.to_user);
             freindemail=otheruser.email;
+            
                 // removing currunt user from otheruser freindship list  
                 let removeuser=
                 {
                     name:user.name,
-                    id:req.query.id
+                    id:req.query.id,
+                    _id:otheruser._id,
+                    avatar:otheruser.avatar
                 }
-             //   console.log('removing user',removeuser);
-          //   console.log(' from',otheruser.name)
+                console.log('removing user',removeuser);
+            console.log(' from',otheruser.name)
             otheruser.friendships.splice(otheruser.friendships.indexOf(removeuser), 1);
             otheruser.save();
             
@@ -208,16 +211,18 @@ module.exports.removeFreind=async function(req,res)
         // if other user have send setails then currunt user have used others user freind id 
         else{
             let freinduser=await User.findById(freindship.from_user);
-            freindname=freinduser.name;
-            freindemail=freinduser.email;
+         
              // removing currunt user from otheruser freindship list  
              let removeuser=
              {
                  name:user.name,
-                 id:req.query.id
+                 id:req.query.id,
+                 _id:user._id,
+                 avatar:user.avatar
              }
-           // console.log('removing user',removeuser);
-           //  console.log(' from',freinduser.name)
+            console.log('removing user',removeuser);
+            console.log(' from',freinduser.name)
+            console.log('user index,freinduser',freinduser.friendships.indexOf(removeuser));
              freinduser.friendships.splice(freinduser.friendships.indexOf(removeuser), 1);
              freinduser.save();
              
@@ -225,11 +230,13 @@ module.exports.removeFreind=async function(req,res)
 
             console.log('freind name',freindname);
         freindship.remove();
-        let removeUser=
-        {
-            id:req.query.id,
-            name:freindname
-        }
+        // let removeuser=
+        // {
+        //     id:req.query.id,
+        //     name:freindname,
+        //     freind_id=otheruser._id,
+        //     freind_avatar=otheruser.avatar
+        // }
          let removerequest={
             
              name:freindname,
@@ -238,9 +245,11 @@ module.exports.removeFreind=async function(req,res)
          }
         user.request.splice(user.request.indexOf(removerequest),1);
        
-    // removing the following user from freindship array
-        user.friendships.splice( user.friendships.indexOf(removeUser), 1 );
-        user.save();
+    // // removing the following user from freindship array
+    // console.log('removing ',removeUser,'from',user.name);
+    // console.log('user index,freinduser',user.friendships.indexOf(removeuser));
+    //     user.friendships.splice( user.friendships.indexOf(removeuser), 1 );
+    //     user.save();
 
     // queuing job for sending unfreind mail
     // sending reuired details by one object

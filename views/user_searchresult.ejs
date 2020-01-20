@@ -3,9 +3,33 @@
 
 <ul id="search-result">
     <% for (p_user of users){%>
+<<<<<<< HEAD
         <a href="/user/profile/<%=p_user._id%>">
             <li id='info'>
                 <div class='usercard col-lg-30'>
+=======
+    <a href="/user/profile/<%=p_user._id%>">
+     <li id='info'>
+         <div class='usercard col-lg-30'>
+              
+             <%if (p_user.avatar) {%>
+             <img class='usercard-image' src='<%=p_user.avatar%>'>
+             <%} else{%>
+                 <img class='usercard-image' src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
+                 <%}%>   
+            
+             <h4 class='usercard-name'><%=p_user.name%></h4>
+             <p class='usercard-username'><%p_user.email%></p>
+
+             <%let check%>
+             <% for (f of user.friendships){%>
+                
+                 
+                 <%if(f._id==p_user.id){%>
+                     <%check=true%>
+                     <%break%>
+                     <%}%>
+>>>>>>> 9457ff2b635613240c0d3d6271ecbe7ddf45daa4
                     
                     <%if (p_user.avatar) {%>
                         <img class='usercard-image' src='<%=p_user.avatar%>'>
