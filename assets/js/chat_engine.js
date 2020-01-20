@@ -48,10 +48,7 @@ class ChatEngine
         });
 
         self.socket.on('receive_message', function(data){
-         
 
-       
-           
             let newMessage = $('<li>');
 
             let messageType ='other-message'
@@ -61,17 +58,17 @@ class ChatEngine
             }
 
            
-            newMessage.append($('<span>', {
-                
+            newMessage.append($('<div>', {                
                 'html': data.message
             }));
 
-           
-
             newMessage.addClass(messageType);
-
             $('#chat-messages-list').append(newMessage);
-        
+            setTimeout(()=>{
+                document.getElementById('chat-message-input').value = '';
+                var chatlist = document.getElementById('chat-messages-list');
+		        chatlist.scrollBy(0, chatlist.scrollHeight);
+            }, 60)
         });
     }
     }

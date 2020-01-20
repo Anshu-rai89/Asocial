@@ -30,7 +30,7 @@ var today = new Date()
     <div class='title'>
         <div><%=post.user.name%></div>
         <div class="date-time">
-            <% if (post_time.toLocaleDateString != today.toLocaleDateString) {%>
+            <% if (post_time.toLocaleDateString() != today.toLocaleDateString()) {%>
                 <%=post_time.toLocaleDateString('default', {weekday: 'short'})-%>, <%=post_time.getDate()-%> <%=post_time.toLocaleDateString('default', {month: 'short'})-%> <%=post_time.getYear() + 1900-%>
             <%} else {%>
                 <%=post_time.toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})-%>
