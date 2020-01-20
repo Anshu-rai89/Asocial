@@ -17,7 +17,7 @@
                         <h4 class='usercard-name'><%=p_user.name%></h4>
                         <p class='usercard-username'><%p_user.email%></p>
                     </div>
-                    displaying
+                 
                     <%let check%>
                     <% for (f of locals.user.friendships){%>
                        
@@ -31,9 +31,13 @@
                     <%if(check){%>
                         <button class='usercard-button accept'>Connected</button>
                     <%}else{%>
+
+                       
                         <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'>
+
                         <button type='submit' id=''  class='usercard-button accept'>
                         <i class='fa fa-user'></i>Add Friend</button></a>
+                       
                     <%}%>
                 </div>     
             </li>

@@ -80,7 +80,7 @@ try{
             to_user:req.query.id,
            
         });
-  //  console.log('checking ',existingfreindship);
+    console.log('checking ',existingfreindship);
         if(!existingfreindship)
         {
             // create it 
@@ -102,7 +102,7 @@ try{
 
                 touser.request.push(request);
                 touser.save();
-         
+         console.log('pushing request from ',touser,'request to ',request);
                 req.flash('success','Freind Request Send');
           
         // push a job for worker to send confirm mail to to_user
@@ -198,8 +198,9 @@ module.exports.removeFreind=async function(req,res)
                     name:user.name,
                     id:req.query.id
                 }
-             //   console.log('removing user',removeuser);
-          //   console.log(' from',otheruser.name)
+               console.log('removing user',removeuser);
+            console.log(' from',otheruser.name);
+            console.log(otheruser.friendships.indexOf(removeuser));
             otheruser.friendships.splice(otheruser.friendships.indexOf(removeuser), 1);
             otheruser.save();
             
@@ -216,8 +217,9 @@ module.exports.removeFreind=async function(req,res)
                  name:user.name,
                  id:req.query.id
              }
-           // console.log('removing user',removeuser);
-           //  console.log(' from',freinduser.name)
+           console.log('removing user',removeuser);
+            console.log(' from',freinduser.name)
+            console.log(freinduser.friendships.indexOf(removeuser));
              freinduser.friendships.splice(freinduser.friendships.indexOf(removeuser), 1);
              freinduser.save();
              
@@ -225,7 +227,7 @@ module.exports.removeFreind=async function(req,res)
 
             console.log('freind name',freindname);
         freindship.remove();
-        let removeUser=
+        let removeuser=
         {
             id:req.query.id,
             name:freindname
@@ -239,7 +241,8 @@ module.exports.removeFreind=async function(req,res)
         user.request.splice(user.request.indexOf(removerequest),1);
        
     // removing the following user from freindship array
-        user.friendships.splice( user.friendships.indexOf(removeUser), 1 );
+    console.log(user.friendships.indexOf(removeuser));
+        user.friendships.splice( user.friendships.indexOf(removeuser), 1 );
         user.save();
 
     // queuing job for sending unfreind mail
