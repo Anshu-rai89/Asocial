@@ -8,6 +8,8 @@ var today = new Date()
    <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
 <p>
 <script>
+    console.log('check date')
+    console.log(`<%=post_time.toLocaleDateString()%>`)
     let user=$('#one');
     console.log(user);
     let arr= user[0];
@@ -30,7 +32,7 @@ var today = new Date()
     <div class='title'>
         <div><%=post.user.name%></div>
         <div class="date-time">
-            <% if (post_time.toLocaleDateString != today.toLocaleDateString) {%>
+            <% if (post_time.toLocaleDateString() != today.toLocaleDateString()) {%>
                 <%=post_time.toLocaleDateString('default', {weekday: 'short'})-%>, <%=post_time.getDate()-%> <%=post_time.toLocaleDateString('default', {month: 'short'})-%> <%=post_time.getYear() + 1900-%>
             <%} else {%>
                 <%=post_time.toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})-%>
