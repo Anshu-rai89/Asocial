@@ -35,11 +35,12 @@ class ChatEngine
 
         $('#send-message').click(function(){
             let msg = $('#chat-message-input').val();
+            console.log(msg);
             $('#chat-message-input').text('');
             console.log(msg);
 
             if (msg != ''){
-                self.socket.emit('send_message', {
+                self.socket.emit('send_message', { 
                     message: msg,
                     user_email: self.userEmail,
                     chatroom: `${self.chatRoom}`
