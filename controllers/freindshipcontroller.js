@@ -201,9 +201,9 @@ module.exports.removeFreind=async function(req,res)
                     _id:otheruser._id,
                     avatar:otheruser.avatar
                 }
-                console.log('removing user',removeuser);
-            console.log(' from',otheruser.name)
-            otheruser.friendships.splice(otheruser.friendships.indexOf(removeuser), 1);
+             //   console.log('removing user',removeuser);
+          //  console.log(' from',otheruser.name)
+            otheruser.friendships.splice(otheruser.friendships.findIndex(x=>x.name==removeuser.name), 1);
             otheruser.save();
             
         }
@@ -220,36 +220,36 @@ module.exports.removeFreind=async function(req,res)
                  _id:user._id,
                  avatar:user.avatar
              }
-            console.log('removing user',removeuser);
-            console.log(' from',freinduser.name)
-            console.log('user index,freinduser',freinduser.friendships.indexOf(removeuser));
-             freinduser.friendships.splice(freinduser.friendships.indexOf(removeuser), 1);
+        //    console.log('removing user',removeuser);
+          //  console.log(' from',freinduser.name)
+          //  console.log('user index,freinduser',freinduser.friendships.indexOf(removeuser));
+             freinduser.friendships.splice(freinduser.friendships.findIndex(x=>x.name==removeuser.name), 1);
              freinduser.save();
              
         }
 
-            console.log('freind name',freindname);
+           // console.log('freind name',freindname);
         freindship.remove();
-        // let removeuser=
-        // {
-        //     id:req.query.id,
-        //     name:freindname,
-        //     freind_id=otheruser._id,
-        //     freind_avatar=otheruser.avatar
-        // }
+        let removeuser=
+        {
+            id:req.query.id,
+            name:freindname,
+            freind_id=otheruser._id,
+            freind_avatar=otheruser.avatar
+        }
          let removerequest={
             
              name:freindname,
             
              id:req.query.id
          }
-        user.request.splice(user.request.indexOf(removerequest),1);
+        user.request.splice(user.request.findIndex(x=>x.name==removerequest.name),1);
        
     // // removing the following user from freindship array
     // console.log('removing ',removeUser,'from',user.name);
     // console.log('user index,freinduser',user.friendships.indexOf(removeuser));
-    //     user.friendships.splice( user.friendships.indexOf(removeuser), 1 );
-    //     user.save();
+        user.friendships.splice( user.friendships.findIndex(x=>x.name==removeuser.name), 1 );
+        user.save();
 
     // queuing job for sending unfreind mail
     // sending reuired details by one object
