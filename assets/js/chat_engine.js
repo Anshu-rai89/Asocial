@@ -29,14 +29,15 @@ class ChatEngine
 
             self.socket.on('user-joined',function(data)
             {
-                console.log('a user joined',data);
+              //  console.log('a user joined',data);
             })
         });
 
         $('#send-message').click(function(){
+           // console.log('send is cliked');
             let msg = $('#chat-message-input').val();
             $('#chat-message-input').text('');
-            console.log(msg);
+            //console.log(msg);
 
             if (msg != ''){
                 self.socket.emit('send_message', {
