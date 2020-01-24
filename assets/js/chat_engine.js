@@ -33,6 +33,16 @@ class ChatEngine
             })
         });
 
+        // handling enter key press
+        $("#chat-message-input").keypress(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            //alert(code);
+            if (code == 13) {
+                $("#send-message").trigger('click');
+            }
+        });
+
+
         $('#send-message').click(function(){
            // console.log('send is cliked');
             let msg = $('#chat-message-input').val();
