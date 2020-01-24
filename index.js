@@ -34,37 +34,30 @@ console.log('chatserver is listning at port 5000');
 
 // middlewares 
 
-if (env.name == 'development')
-{
-    app.use(sassMiddleware({
-        src: './assets/scss',
-        dest: './assets/css',
-        debug: true,
-        outputStyle: 'compressed',
-        prefix: '/css'
-    }));
+// if (env.name == 'development')
+// {
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'compressed',
+    prefix: '/css'
+}));
 
-    app.use(express.static('./assets'));
 
-} else {
-    app.use(sassMiddleware({
-        src: './assets/scss',
-        dest: '.public/assets/css',
-        debug: true,
-        outputStyle: 'compressed',
-        prefix: '/css'
-    }));
-    app.use(express.static('./public/assets'));
-}
 
 // makeing uplod path avaialble for the browser
 
-app.use('/uploads',express.static(__dirname +'/uploads'));
-app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(expresslayout);
 app.use(express.urlencoded());
 app.use(cokkiesparser());
+
+app.use(express.static('./assets'));
+
+
+app.use('/uploads',express.static(__dirname +'/uploads'));
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 // extract style and script from subpages to layouts
 app.set('layout extractStyles',true);
