@@ -3,7 +3,7 @@ const express=require('express');
 
 const app=express();
 require('./config/viewhelpers')(app);
-const port=8000;
+const port=7000;
 
 // using express layouts for creating views layout
 const expresslayout=require('express-ejs-layouts');
