@@ -38,6 +38,7 @@
 
 
 <script>
+	$('input').textinput({ preventFocusZoom: true });
 	$('#chatbutton').click(function(){
 		   $('#chat').toggleClass('show');
 		   var chatbox = document.getElementById('chat-message-input');
