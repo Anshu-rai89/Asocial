@@ -1,3 +1,5 @@
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
 <div class="chatbox-container" id="chat" >
 	<% if (locals.user){ %>
 		<div id="user-chat-box">
@@ -38,7 +40,7 @@
 
 
 <script>
-	$('input').textinput({ preventFocusZoom: true });
+
 	$('#chatbutton').click(function(){
 		   $('#chat').toggleClass('show');
 		   var chatbox = document.getElementById('chat-message-input');
