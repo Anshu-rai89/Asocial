@@ -48,23 +48,20 @@
  
     #chatbutton
     {
-        height: 30px;
-        width:70px;
+        padding :10px;
         background-color: green;
         color:white;
+        width:80px;
         font-weight: bolder;
-        margin-left:3%;border: 2px solid green;
+        border: 2px solid green;
 
     }
 }
-    .UnFriend
-    {   display: inline-block;
-        margin-left:80%;
+    .UnFriend{
+        margin-left:78%;
         color:white;
         background-color: red;
-        height:30px;
-        width:90px;
-        font-weight: bolder;
+        font-weight:200;
         border:2px solid red;
         margin-top:-12%;
     }
