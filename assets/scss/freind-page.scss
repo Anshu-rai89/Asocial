@@ -1,7 +1,7 @@
 
 #freind
 { 
-    height:30%;
+    height:50%;
     width:80%; 
     margin:5%;
     border: 1px solid lightgray;
@@ -54,15 +54,18 @@
         width:80px;
         font-weight: bolder;
         border: 2px solid green;
-
+        margin-left:10%;
     }
 }
     .UnFriend{
-        margin-left:78%;
+        margin-left:50%;
+        margin-top:3%;
+        font-weight:bolder;
         color:white;
         background-color: red;
         font-weight:200;
         border:2px solid red;
+        padding:10px;
        
     }
 }
