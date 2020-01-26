@@ -54,7 +54,7 @@ const production=
     auth:
     {
         user:process.env.Google_Username,
-        pass:process.env.Google_Password
+      //  pass:process.env.Google_Password
     }
     },
     google_auth_clientID:process.env.Google_clientid,                          // use your own clinet id

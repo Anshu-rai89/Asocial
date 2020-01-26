@@ -26,6 +26,7 @@ class PostComments{
         let pSelf = this;
         this.newCommentForm.submit(function(e){
             e.preventDefault();
+            console.log('crating cooment');
             let self = this;
 
             $.ajax({

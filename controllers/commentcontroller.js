@@ -19,7 +19,7 @@ module.exports.create=async function(req,res)
                   user:req.user._id
                  
                });
-                   console.log(comment);
+                   console.log('comment is creating',comment);
                    post.comment.push(comment);
                    post.save();
                    comment= await comment.populate('user','name email avatar').execPopulate();

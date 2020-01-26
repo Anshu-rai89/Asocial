@@ -57,6 +57,20 @@
         margin-left:10%;
     }
 }
+
+    .UnFriend{
+        
+        padding :10px;
+        background-color: red;
+        color:white;
+        width:80px;
+        font-weight: bolder;
+        border: 2px solid red;
+        margin-left:80%;
+        margin-top:-12%;
+    }
+
+@media only screen  and (max-width:1000px){
     .UnFriend{
         margin-left:50%;
         margin-top:3%;
@@ -68,4 +82,5 @@
         padding:10px;
        
     }
+}
 }

@@ -6,20 +6,7 @@ var today = new Date()
 <li id="post-<%=post._id%>" class="card">
     <div class="container feed-container">       
    <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
-<p>
-<script>
-    let user=$('#one');
-    console.log(user);
-    let arr= user[0];
-    console.log('arr is ',arr);
-    let z=  arr.findIndex(x => x._id == post.user)
-    console.log(z);
-    if (user.frefriendships.findIndex(x => x._id == post.user)!=-1)
-    {
-        console.log('inside if ');
-    }
 
-</script>
 
 <div class="header">
     <%if (post.user.avatar) {%>
@@ -105,4 +92,3 @@ var today = new Date()
     </div>
    </li> 
 
-   <script src='/js/home_post.js'></script>

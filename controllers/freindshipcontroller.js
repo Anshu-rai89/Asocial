@@ -42,7 +42,7 @@ try{
             }
           
             fromuser.friendships.push(friend);
-           // console.log('adding freind', friend,'in ',fromuser.name);
+            console.log('adding freind', friend,'in ',fromuser.name);
             //fromuser.save();
 
            // var otherfreind=
@@ -53,16 +53,15 @@ try{
             _id:fromuser._id,
             avatar:fromuser.avatar
         });
+
+        console.log('adding freind',fromuser.name,'in',touser.name);
             
             touser.save();
-             let removerequest={
-                 _id:fromuser._id,
-                 name:fromuser.name,
-                 avatar:fromuser.avatar,
-                 id:`${otherfreind._id}`,
-             }
-          //   console.log('removing ',removerequest,'from',fromuser.name);
-            fromuser.request.splice(fromuser.request.indexOf(removerequest),1);
+            
+
+           //  console.log(removerequest);
+            console.log('removing ',fromuser.request.findIndex(x=>x.name==touser.name),'from',fromuser.name);
+            fromuser.request.splice(fromuser.request.findIndex(x=>x.name==touser.name),1);
             fromuser.save();
          
            // console.log(fromuser.friendships);
@@ -102,7 +101,7 @@ try{
 
                 touser.request.push(request);
                 touser.save();
-         console.log('pushing request from ',touser,'request to ',request);
+         console.log('pushing request from ',touser.name,'request to ',request.name);
                 req.flash('success','Freind Request Send');
           
         // push a job for worker to send confirm mail to to_user
