@@ -15,7 +15,7 @@ router.get('/post',usercontoler.post);
 router.get('/signup',usercontoler.signup);
 router.get('/signin',usercontoler.signin);
 router.post('/create',usercontoler.create);
-router.post('/create-session',passport.authenticate('local'
+router.post('/create-session',passport.authenticate('local' 
 ,{failureRedirect:'/user/signin'}),usercontoler.createsession);
 router.get('/signout',usercontoler.signout);
 router.get('/resetpassword/page',usercontoler.resetpasswordpage);

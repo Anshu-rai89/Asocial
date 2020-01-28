@@ -3,7 +3,7 @@ const express=require('express');
 
 const app=express();
 require('./config/viewhelpers')(app);
-const port=8000;
+const port=7000;
 
 // using express layouts for creating views layout
 const expresslayout=require('express-ejs-layouts');
@@ -34,11 +34,12 @@ console.log('chatserver is listning at port 5000');
 
 // middlewares 
 
-if (env.name == 'development')
-{
+
+// if (env.name == 'development')
+// {
 app.use(sassMiddleware({
-    src: './public/assets/scss',
-    dest: './public/assets/css',
+    src: './assets/scss',
+    dest: './assets/css',
     debug: true,
     outputStyle: 'compressed',
     prefix: '/css'
@@ -52,6 +53,14 @@ app.use(sassMiddleware({
 app.use(expresslayout);
 app.use(express.urlencoded());
 app.use(cokkiesparser());
+app.use('/uploads',express.static(__dirname +'/uploads'));
+app.use(logger(env.morgan.mode, env.morgan.options));
+
+app.use(express.static('./assets'));
+
+
+app.use('/uploads',express.static(__dirname +'/uploads'));
+app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(express.static('./public/assets'));
 

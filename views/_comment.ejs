@@ -9,7 +9,7 @@ var today = new Date()
         <div style="flex: 1">
             <div><%=c.user.name-%></div>
             <div class="date-time">
-                <% if (post_time.toLocaleDateString != today.toLocaleDateString) {%>
+                <% if (post_time.toLocaleDateString() != today.toLocaleDateString()) {%>
                     <%=post_time.toLocaleDateString('default', {weekday: 'short'})-%>, <%=post_time.getDate()-%> <%=post_time.toLocaleDateString('default', {month: 'short'})-%> <%=post_time.getYear() + 1900-%>
                 <%} else {%>
                     <%=post_time.toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})-%>
@@ -20,7 +20,7 @@ var today = new Date()
             <div class="drop-down" style="margin-top: -8px">
                 <i class="fa fa-ellipsis-v cursor"></i>
                 <ul>
-                    <li class="hover-red"><a  class='delete-comment-button'href="/comment/destroy/<%=c.id%>"><i class="fa fa-trash"></i><span>Delete</span></a></li>
+                    <li><a  class="hover-red delete-comment-button" href="/comment/destroy/<%=c.id%>"><i class="fa fa-trash"></i><span>Delete</span></a></li>
                 </ul>
             </div>
         <%}%>
@@ -43,3 +43,4 @@ var today = new Date()
 
 <!--  display the likes of this comment, if the user is logged in, then show the link to toggle likes, else, just show the count -->
 </li>
+

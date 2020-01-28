@@ -6,20 +6,7 @@ var today = new Date()
 <li id="post-<%=post._id%>" class="card">
     <div class="container feed-container">       
    <!--  display the likes of this POst, if the user is logged in, then show the link to toggle likes, else, just show the count -->
-<p>
-<script>
-    let user=$('#one');
-    console.log(user);
-    let arr= user[0];
-    console.log('arr is ',arr);
-    let z=  arr.findIndex(x => x._id == post.user)
-    console.log(z);
-    if (user.frefriendships.findIndex(x => x._id == post.user)!=-1)
-    {
-        console.log('inside if ');
-    }
 
-</script>
 
 <div class="header">
     <%if (post.user.avatar) {%>
@@ -30,7 +17,7 @@ var today = new Date()
     <div class='title'>
         <div><%=post.user.name%></div>
         <div class="date-time">
-            <% if (post_time.toLocaleDateString != today.toLocaleDateString) {%>
+            <% if (post_time.toLocaleDateString() != today.toLocaleDateString()) {%>
                 <%=post_time.toLocaleDateString('default', {weekday: 'short'})-%>, <%=post_time.getDate()-%> <%=post_time.toLocaleDateString('default', {month: 'short'})-%> <%=post_time.getYear() + 1900-%>
             <%} else {%>
                 <%=post_time.toLocaleTimeString("en-US", {hour: '2-digit', minute:'2-digit'})-%>
@@ -42,7 +29,7 @@ var today = new Date()
         <div class="drop-down">
             <i class="fa fa-ellipsis-v cursor"></i>
             <ul>
-                <li class="hover-red"><a class='delete-post-button'href="/post/destroy/<%= post.id %>"><i class="fa fa-trash"></i><span>Delete</span></a></li>
+                <li><a class='hover-red delete-post-button' href="/post/destroy/<%= post.id %>"><i class="fa fa-trash"></i><span>Delete</span></a></li>
             </ul>
         </div>
     <% } %>
@@ -104,3 +91,4 @@ var today = new Date()
        </div>
     </div>
    </li> 
+

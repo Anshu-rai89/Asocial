@@ -3,27 +3,9 @@
 
 <ul id="search-result">
     <% for (p_user of users){%>
-    <a href="/user/profile/<%=p_user._id%>">
-     <li id='info'>
-         <div class='usercard col-lg-30'>
-              
-             <%if (p_user.avatar) {%>
-             <img class='usercard-image' src='<%=p_user.avatar%>'>
-             <%} else{%>
-                 <img class='usercard-image' src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png">
-                 <%}%>   
-            
-             <h4 class='usercard-name'><%=p_user.name%></h4>
-             <p class='usercard-username'><%p_user.email%></p>
-
-             <%let check%>
-             <% for (f of user.friendships){%>
-                
-                 
-                 <%if(f._id==p_user.id){%>
-                     <%check=true%>
-                     <%break%>
-                     <%}%>
+        <a href="/user/profile/<%=p_user._id%>">
+            <li id='info'>
+                <div class='usercard col-lg-30'>
                     
                     <%if (p_user.avatar) {%>
                         <img class='usercard-image' src='<%=p_user.avatar%>'>
@@ -33,9 +15,7 @@
                 
                     <div class="desc">
                         <h4 class='usercard-name'><%=p_user.name%></h4>
-                        <p class='usercard-username'><%p_user.email%></p>
                     </div>
-                    displaying
                     <%let check%>
                     <% for (f of locals.user.friendships){%>
                        
@@ -45,12 +25,17 @@
                             <%break%>>
                         <%}%>
                     <%}%>
+
                     <%if(check){%>
                         <button class='usercard-button accept'>Connected</button>
                     <%}else{%>
+
+                       
                         <a href='/freind/add?id=<%=p_user._id%>&name=<%=user.id%>'>
+
                         <button type='submit' id=''  class='usercard-button accept'>
                         <i class='fa fa-user'></i>Add Friend</button></a>
+                       
                     <%}%>
                 </div>     
             </li>

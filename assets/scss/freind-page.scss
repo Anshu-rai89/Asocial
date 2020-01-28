@@ -1,0 +1,86 @@
+
+#freind
+{ 
+    height:50%;
+    width:80%; 
+    margin:5%;
+    border: 1px solid lightgray;
+    #img
+    {   margin: 3%;
+        display: inline-block;
+        #profile-pic
+        {
+            height: 100px;
+            width:100px;
+            border-radius: 50%;
+            margin-left:2%;
+            margin-top: 2%;
+        } 
+    }
+
+    #details
+    {   display: inline-block;
+      
+        margin-left:4%;
+    
+    .user-name
+        {
+       
+            color :blue;
+            font-weight: bolder;
+            font-size:15px;
+           margin-left: 3%;
+        
+        }
+
+    
+    .bio
+    {
+        
+        height:40px;
+        margin-top:-3%;
+        font-size:15px;
+        font-weight: bolder;
+        color:black;
+        
+    }
+
+ 
+    #chatbutton
+    {
+        padding :10px;
+        background-color: green;
+        color:white;
+        width:80px;
+        font-weight: bolder;
+        border: 2px solid green;
+        margin-left:10%;
+    }
+}
+
+    .UnFriend{
+        
+        padding :10px;
+        background-color: red;
+        color:white;
+        width:80px;
+        font-weight: bolder;
+        border: 2px solid red;
+        margin-left:80%;
+        margin-top:-12%;
+    }
+
+@media only screen  and (max-width:1000px){
+    .UnFriend{
+        margin-left:50%;
+        margin-top:3%;
+        font-weight:bolder;
+        color:white;
+        background-color: red;
+        font-weight:200;
+        border:2px solid red;
+        padding:10px;
+       
+    }
+}
+}

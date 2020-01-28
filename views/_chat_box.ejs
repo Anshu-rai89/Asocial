@@ -1,8 +1,11 @@
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+
 <div class="chatbox-container" id="chat" >
 	<% if (locals.user){ %>
-		<div id="user-chat-box"> 
+		<div id="user-chat-box">
 			<div class="heading">
-				<span class="name"><%=locals.user.friendships[0].name%></span>
+				<span class="name"><%=profile_user.name%></span>
 				<span class="icon" id="chat-close"><i class="fa fa-times"></i></span>
 			</div>
 			<ul id="chat-messages-list">
@@ -17,13 +20,22 @@
 							<li class="self-message">
 								<div><%=m.msg%></div>	
 							</li>
+<<<<<<< HEAD
+=======
+
+							
+>>>>>>> 7e03cf170fc054ed5cf7d43ea0406a6b852f4819
 						<%}%>
 					<%}%>
 			   <%}%>
 
+<<<<<<< HEAD
 			   <li class="other-message">
 					<div>This is a test mesg</div>
 				</li>
+=======
+			  
+>>>>>>> 7e03cf170fc054ed5cf7d43ea0406a6b852f4819
 			</ul>
 			<div id="chat-message-input-container" class="input-group">
 				<input id="chat-message-input" type="text" placeholder="Message"/>
@@ -38,6 +50,10 @@
 
 
 <script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7e03cf170fc054ed5cf7d43ea0406a6b852f4819
 	$('#chatbutton').click(function(){
 		   $('#chat').toggleClass('show');
 		   var chatbox = document.getElementById('chat-message-input');
@@ -56,4 +72,9 @@
 		chatlist.scrollBy(0, chatlist.scrollHeight);
 	 }
  );
+<<<<<<< HEAD
 </script>
+=======
+</script>
+	
+>>>>>>> 7e03cf170fc054ed5cf7d43ea0406a6b852f4819

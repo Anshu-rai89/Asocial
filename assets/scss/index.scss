@@ -1,0 +1,25 @@
+@import "./color.scss";
+@import "./base/base.scss";
+@import "./shared/index.scss";
+@import "./misc.scss";
+
+// fontawesome icons
+@import "./third-party/fa-icons/scss/fontawesome.scss";
+
+// Pages
+
+@import'./chatbot.scss';
+@import './footer.scss';
+@import './header.scss';
+@import './home.scss';
+@import './post.scss';
+@import './search_result.scss';
+@import './user_profile.scss';
+@import './userprofile.scss';
+@import './freind-page.scss';
+@import './chatbox.scss';
+
+@import './wecome.scss';
+@import './form-page.scss';
+
+
