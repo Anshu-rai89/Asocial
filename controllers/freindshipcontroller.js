@@ -193,12 +193,8 @@ module.exports.removeFreind=async function(req,res)
 
             let otheruser=await User.findById(freindship.to_user);
             freindemail=otheruser.email;
-<<<<<<< HEAD
-            
-=======
             freindid=otheruser._id;
             avat=otheruser.avatar;
->>>>>>> 7e03cf170fc054ed5cf7d43ea0406a6b852f4819
                 // removing currunt user from otheruser freindship list  
                 let removeuser=
                 {
